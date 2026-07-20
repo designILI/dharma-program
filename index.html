@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Dharma Program — A K–8 Contemplative Curriculum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & base ──────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #F9F6EF;
+      --paper:    #F2EDE2;
+      --ink:      #1C1714;
+      --ink-soft: #4A3F35;
+      --ink-mute: #8A7B6E;
+      --rust:     #8B3A2A;
+      --saffron:  #C07828;
+      --gold:     #D4A843;
+      --rule:     #DDD5C4;
+      --card-bg:  #FFFFFF;
+      --serif:    'Playfair Display', Georgia, serif;
+      --sans:     'Inter', system-ui, sans-serif;
+      --body:     'Lora', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ───────────────────────────────────────── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--rust); }
+
+    /* ── Hero ──────────────────────────────────────── */
+    .hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 100px 48px 80px;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--saffron);
+      opacity: 0.5;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--rust);
+    }
+
+    .hero-sub {
+      font-family: var(--body);
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 620px;
+      margin: 0 auto 48px;
+      line-height: 1.8;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .hero-meta-item {
+      text-align: center;
+    }
+
+    .hero-meta-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .hero-meta-value {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* ── Section wrapper ───────────────────────────── */
+    .section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 48px;
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--rule);
+    }
+
+    .section-number {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--saffron);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .section h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 24px;
+      color: var(--ink);
+    }
+
+    .section h2 em {
+      font-style: italic;
+    }
+
+    .section p {
+      color: var(--ink-soft);
+      margin-bottom: 20px;
+      max-width: 680px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    /* ── Pull quote ────────────────────────────────── */
+    .pull-quote {
+      border-left: 3px solid var(--saffron);
+      padding: 20px 32px;
+      margin: 40px 0;
+      background: var(--paper);
+    }
+
+    .pull-quote p {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.65;
+      max-width: 100%;
+    }
+
+    /* ── Philosophy pillars ────────────────────────── */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .pillar {
+      border-top: 2px solid var(--saffron);
+      padding-top: 20px;
+    }
+
+    .pillar-title {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 10px;
+    }
+
+    .pillar h3 {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .pillar p {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      margin: 0;
+      max-width: 100%;
+    }
+
+    /* ── Grade grid ────────────────────────────────── */
+    .grade-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 40px;
+      background: var(--rule);
+    }
+
+    .grade-card {
+      background: var(--card-bg);
+      padding: 32px 36px;
+      text-decoration: none;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .grade-card:hover { background: var(--paper); }
+
+    .grade-card.available:hover .grade-card-arrow { opacity: 1; transform: translateX(0); }
+
+    .grade-card-number {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .grade-card-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .grade-card-subtitle {
+      font-family: var(--body);
+      font-size: 0.88rem;
+      font-style: italic;
+      color: var(--saffron);
+      margin-bottom: 12px;
+    }
+
+    .grade-card-meta {
+      font-family: var(--sans);
+      font-size: 11px;
+      color: var(--ink-mute);
+      letter-spacing: 0.04em;
+    }
+
+    .grade-card-arrow {
+      position: absolute;
+      right: 32px;
+      bottom: 32px;
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rust);
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .grade-card.locked .grade-card-title { color: var(--ink-mute); }
+    .grade-card.locked .grade-card-number { color: var(--rule); }
+    .grade-card.locked .grade-card-subtitle { color: var(--rule); }
+
+    .grade-card-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-top: 14px;
+    }
+
+    .status-available {
+      background: #EDF5EE;
+      color: #2D6A35;
+    }
+
+    .status-coming {
+      background: var(--paper);
+      color: var(--ink-mute);
+    }
+
+    /* ── Spiral section ────────────────────────────── */
+    .spiral-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 32px;
+      font-size: 0.9rem;
+    }
+
+    .spiral-table th {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      border-bottom: 1px solid var(--rule);
+      padding: 8px 16px 8px 0;
+      text-align: left;
+      font-weight: 500;
+    }
+
+    .spiral-table td {
+      padding: 14px 16px 14px 0;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .spiral-table td:first-child {
+      font-family: var(--serif);
+      font-weight: 500;
+      color: var(--ink);
+      white-space: nowrap;
+      padding-right: 32px;
+    }
+
+    /* ── Prayer reference ──────────────────────────── */
+    .prayer-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .prayer-tag {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      padding: 6px 14px;
+      border: 1px solid var(--rule);
+      color: var(--ink-soft);
+      border-radius: 2px;
+    }
+
+    .prayer-tag.active {
+      border-color: var(--saffron);
+      color: var(--saffron);
+      background: #FDF8EE;
+    }
+
+    /* ── Footer ────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 48px;
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 32px;
+    }
+
+    .footer-left p {
+      font-family: var(--sans);
+      font-size: 11px;
+      color: var(--ink-mute);
+      letter-spacing: 0.04em;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-nav a {
+      font-family: var(--sans);
+      font-size: 11px;
+      color: var(--ink-mute);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover { color: var(--rust); }
+
+    /* ── Divider ornament ──────────────────────────── */
+    .ornament {
+      text-align: center;
+      color: var(--saffron);
+      font-size: 1.1rem;
+      opacity: 0.4;
+      margin: 8px 0;
+      letter-spacing: 0.4em;
+    }
+
+    /* ── Responsive ────────────────────────────────── */
+    @media (max-width: 700px) {
+      .site-nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero, .section { padding-left: 24px; padding-right: 24px; }
+      .hero { padding-top: 60px; }
+      .pillars { grid-template-columns: 1fr; }
+      .grade-grid { grid-template-columns: 1fr; }
+      .hero-meta { gap: 24px; flex-wrap: wrap; }
+      footer { flex-direction: column; padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ──────────────────────────────────── -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">The Dharma Program</a>
+  <ul class="nav-links">
+    <li><a href="#curriculum">Curriculum</a></li>
+    <li><a href="#philosophy">Philosophy</a></li>
+    <li><a href="#grades">Grades</a></li>
+    <li><a href="grade-1.html">Grade 1 →</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ────────────────────────────────────────── -->
+<header class="hero">
+  <p class="hero-eyebrow">Innovative Institutes of Learning · Dharma Program</p>
+  <h1>A Curriculum for<br/><em>the Whole Child</em></h1>
+  <p class="hero-sub">
+    A contemplative Dharma curriculum for Grades 1–8 — rooted in Buddhist tradition,
+    designed for the classroom. Each year builds on the last, planting seeds that
+    deepen across the whole school journey.
+  </p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Grades</span>
+      <span class="hero-meta-value">1 – 8</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Units</span>
+      <span class="hero-meta-value">30</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Lessons</span>
+      <span class="hero-meta-value">152</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Bloom's Span</span>
+      <span class="hero-meta-value">Remember → Create</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── Section 01 — What this is ───────────────────── -->
+<section class="section" id="curriculum">
+  <span class="section-number">01</span>
+  <h2>A curriculum that grows<br/>with the child</h2>
+  <p>
+    The Dharma Program is a structured, year-by-year contemplative curriculum spanning Grades 1 through 8. It is not a collection of isolated lessons — it is a single, connected arc. Each grade plants something the next grade will deepen. The mantra a six-year-old first hears in Grade 1 becomes a philosophical inquiry in Grade 8.
+  </p>
+  <p>
+    Lessons are written so that a substitute teacher, reading cold, could deliver them with integrity. Exact teacher language is given where it matters most. Everything else is direction, not script.
+  </p>
+
+  <div class="pull-quote">
+    <p>"If taught exactly as written, would a child leave having encountered something real — a genuine story, a real practice, an honest moment of reflection — or having been taught at?"</p>
+  </div>
+
+  <p>
+    That question governs every lesson in this curriculum. The answer must always be the first.
+  </p>
+</section>
+
+<!-- ── Section 02 — Philosophy ─────────────────────── -->
+<section class="section" id="philosophy">
+  <span class="section-number">02</span>
+  <h2>Three principles behind<br/><em>every</em> lesson</h2>
+  <p>These commitments are baked into the design — not stated once and forgotten, but present in the structure of every unit, every class, every closing question.</p>
+
+  <div class="pillars">
+    <div class="pillar">
+      <span class="pillar-title">Doing is knowing</span>
+      <h3>Everything is made, moved, or told</h3>
+      <p>At every grade, the highest form of understanding is doing — chanting, drawing, observing, releasing, sharing. Making is never the optional part of a lesson. It is the lesson.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-title">The spiral</span>
+      <h3>Seeds planted early, deepened later</h3>
+      <p>Ideas introduced in Grade 1 return in Grade 5, and again in Grade 8 — each time with greater depth. Teachers are reminded of the spiral in each lesson's guidance notes.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-title">The whole person</span>
+      <h3>Bloom's levels rise across the grades</h3>
+      <p>Grades 1–3 ask children to Remember, Understand, and Apply. Grades 4–6 bring Analysis. Grades 7–8 reach Evaluation and Creation. The curriculum respects where children are.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Section 03 — Lesson structure ───────────────── -->
+<section class="section">
+  <span class="section-number">03</span>
+  <h2>The rhythm of a lesson</h2>
+  <p>
+    Every class breathes through the same arc: <strong>Settle → Remember → Hear → Talk → Make → Surface → Close.</strong> There is always forward motion, and always a pause. The activity is never passive.
+  </p>
+  <p>
+    Each lesson runs 40 minutes. The Opening (5 min) and Closing (3 min) are fixed — the prayer set, led by a rotating student leader. If time runs short, the Debrief absorbs the cut. The making activity is protected.
+  </p>
+  <div class="pull-quote">
+    <p>"The teacher's role is not only to transfer knowledge. It is to awaken thinking."</p>
+  </div>
+</section>
+
+<!-- ── Section 04 — Grades overview ────────────────── -->
+<section class="section" id="grades">
+  <span class="section-number">04</span>
+  <h2>The full curriculum — <em>eight years,<br/>one arc</em></h2>
+  <p>Grade 1 is complete and available below. Grades 2–8 will be published as they are prepared.</p>
+
+  <div class="grade-grid">
+
+    <a href="grade-1.html" class="grade-card available">
+      <span class="grade-card-number">Grade 1 · Ages 6–7</span>
+      <div class="grade-card-title">The Circle of Kindness</div>
+      <div class="grade-card-subtitle">How do we send kindness to others we cannot see?</div>
+      <div class="grade-card-meta">6 units · 27 lessons · Bloom's: Remember / Understand / Apply</div>
+      <span class="grade-card-status status-available">✦ Available now</span>
+      <span class="grade-card-arrow">Read →</span>
+    </a>
+
+    <div class="grade-card locked">
+      <span class="grade-card-number">Grade 2 · Ages 7–8</span>
+      <div class="grade-card-title">The Widening Circle</div>
+      <div class="grade-card-subtitle">How far can compassion reach?</div>
+      <div class="grade-card-meta">3 units · 16 lessons · Bloom's: Understand / Apply / early Analyze</div>
+      <span class="grade-card-status status-coming">In preparation</span>
+    </div>
+
+    <div class="grade-card locked">
+      <span class="grade-card-number">Grade 3 · Ages 8–9</span>
+      <div class="grade-card-title">Compassion in Action</div>
+      <div class="grade-card-subtitle">What does caring look like in practice?</div>
+      <div class="grade-card-meta">3 units · 14 lessons · Bloom's: Apply / growing Analyze</div>
+      <span class="grade-card-status status-coming">In preparation</span>
+    </div>
+
+    <div class="grade-card locked">
+      <span class="grade-card-number">Grade 4 · Ages 9–10</span>
+      <div class="grade-card-title">The Language of Ritual</div>
+      <div class="grade-card-subtitle">Why do we do things in a certain way?</div>
+      <div class="grade-card-meta">3 units · 16 lessons · Bloom's: Understand / Apply / Analyze</div>
+      <span class="grade-card-status status-coming">In preparation</span>
+    </div>
+
+    <div class="grade-card locked">
+      <span class="grade-card-number">Grade 5 · Ages 10–11</span>
+      <div class="grade-card-title">The Wheel of Existence</div>
+      <div class="grade-card-subtitle">How does everything connect?</div>
+      <div class="grade-card-meta">3 units · 14 lessons · Bloom's: Understand / Apply / Analyze</div>
+      <span class="grade-card-status status-coming">In preparation</span>
+    </div>
+
+    <div class="grade-card locked">
+      <span class="grade-card-number">Grade 6 · Ages 11–12</span>
+      <div class="grade-card-title">Death &amp; What It Asks of Us</div>
+      <div class="grade-card-subtitle">What happens, and what does it ask of the living?</div>
+      <div class="grade-card-meta">4 units · 19 lessons · Bloom's: Analyze</div>
+      <span class="grade-card-status status-coming">In preparation</span>
+    </div>
+
+    <div class="grade-card locked">
+      <span class="grade-card-number">Grade 7 · Ages 12–13</span>
+      <div class="grade-card-title">Teaching as Practice</div>
+      <div class="grade-card-subtitle">What does it mean to truly understand something?</div>
+      <div class="grade-card-meta">4 units · 20 lessons · Bloom's: Evaluate / Create</div>
+      <span class="grade-card-status status-coming">In preparation</span>
+    </div>
+
+    <div class="grade-card locked">
+      <span class="grade-card-number">Grade 8 · Ages 13–14</span>
+      <div class="grade-card-title">The Nature of Mind</div>
+      <div class="grade-card-subtitle">What is the mind, and what can it become?</div>
+      <div class="grade-card-meta">5 units · 26 lessons · Bloom's: Evaluate / Create</div>
+      <span class="grade-card-status status-coming">In preparation</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Section 05 — Spiral connections ─────────────── -->
+<section class="section">
+  <span class="section-number">05</span>
+  <h2>Cross-grade spiral connections</h2>
+  <p>These are the long threads — ideas planted early that return, richer, in later years. Teachers are reminded of each connection in their lesson guidance notes.</p>
+
+  <table class="spiral-table">
+    <thead>
+      <tr>
+        <th>Thread</th>
+        <th>Grades</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Om Mani Padme Hung</td>
+        <td>Introduced as sound (G1) → meaning (G2) → philosophy of mind (G8)</td>
+      </tr>
+      <tr>
+        <td>Prayer flags</td>
+        <td>Made and hung (G1) → concentric circles of Bodhichitta (G2)</td>
+      </tr>
+      <tr>
+        <td>Jataka tales</td>
+        <td>A moral vocabulary introduced in G1, recurring through G2–8</td>
+      </tr>
+      <tr>
+        <td>Ahimsa — not harming</td>
+        <td>Bugs matter (G1) → Tsethar / life release (G3)</td>
+      </tr>
+      <tr>
+        <td>Karma</td>
+        <td>Introduced (G1) → the rim of the Wheel (G5) → philosophical analysis (G8)</td>
+      </tr>
+      <tr>
+        <td>Impermanence</td>
+        <td>Change in the Buddha's life (G2) → the Bardo (G6) → craving analysis (G8)</td>
+      </tr>
+      <tr>
+        <td>Pajapati / women's awakening</td>
+        <td>Seed (G2) → grief excerpt (G6) → full novel study (G8)</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ── Section 06 — Prayers ────────────────────────── -->
+<section class="section">
+  <span class="section-number">06</span>
+  <h2>The prayer repertoire</h2>
+  <p>Each grade inherits the full prayer set of the grades below it and adds one or two new prayers. By Grade 8, students have been opening and closing class with the same prayers for eight years.</p>
+
+  <div class="prayer-tags">
+    <span class="prayer-tag active">Kyap Dro (G1+)</span>
+    <span class="prayer-tag active">Om Mani Padme Hung (G1+)</span>
+    <span class="prayer-tag active">Manjushri Prayer (G1+)</span>
+    <span class="prayer-tag">Sem kye, Ngowa (G2+)</span>
+    <span class="prayer-tag">7-Line Guru Rinpoche Prayer (G3+)</span>
+    <span class="prayer-tag">Food Offering Prayer (G3+)</span>
+    <span class="prayer-tag">Sevenline Prayer, Dusum Sangay (G4+)</span>
+    <span class="prayer-tag">Dechen Monlam (G5+)</span>
+    <span class="prayer-tag">Dolma / Tara Prayer (G6+)</span>
+    <span class="prayer-tag">Rewo Sang Chod (G7+)</span>
+    <span class="prayer-tag">Tsog Due pa (G8)</span>
+  </div>
+
+  <p style="margin-top: 24px; font-size: 0.88rem;">For pronunciation, meaning, and context of each prayer, see the <strong>Prayer Reference</strong> in the curriculum folder.</p>
+</section>
+
+<!-- ── Footer ───────────────────────────────────────── -->
+<footer>
+  <div class="footer-left">
+    <p>The Dharma Program<br/>
+    Innovative Institutes of Learning<br/>
+    Grade 1 complete · 2026</p>
+  </div>
+  <nav class="footer-nav">
+    <a href="index.html">Overview</a>
+    <a href="grade-1.html">Grade 1</a>
+    <a href="#grades">All Grades</a>
+  </nav>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grade 1 — The Circle of Kindness | The Dharma Program</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #F9F6EF;
+      --paper:    #F2EDE2;
+      --ink:      #1C1714;
+      --ink-soft: #4A3F35;
+      --ink-mute: #8A7B6E;
+      --rust:     #8B3A2A;
+      --saffron:  #C07828;
+      --gold:     #D4A843;
+      --rule:     #DDD5C4;
+      --card-bg:  #FFFFFF;
+      --serif:    'Playfair Display', Georgia, serif;
+      --sans:     'Inter', system-ui, sans-serif;
+      --body:     'Lora', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ─────────────────────────── */
+    .site-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 0 48px; height: 56px;
+    }
+    .nav-logo { font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-family: var(--sans); font-size: 12px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-mute); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--rust); }
+
+    /* ── Two-column layout ───────────── */
+    .page-wrap {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      max-width: 1060px;
+      margin: 0 auto;
+      gap: 0;
+    }
+
+    /* ── Sidebar ─────────────────────── */
+    .sidebar {
+      padding: 60px 0 80px;
+      border-right: 1px solid var(--rule);
+      position: sticky;
+      top: 56px;
+      height: calc(100vh - 56px);
+      overflow-y: auto;
+    }
+
+    .sidebar-grade {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      padding: 0 32px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      padding: 0 32px;
+      margin-bottom: 32px;
+      line-height: 1.35;
+    }
+
+    .sidebar-unit {
+      margin-bottom: 4px;
+    }
+
+    .sidebar-unit-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      padding: 8px 32px 4px;
+      display: block;
+    }
+
+    .sidebar-lessons {
+      list-style: none;
+    }
+
+    .sidebar-lessons li a {
+      display: block;
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--ink-soft);
+      text-decoration: none;
+      padding: 5px 32px;
+      transition: background 0.15s, color 0.15s;
+      line-height: 1.4;
+    }
+
+    .sidebar-lessons li a:hover {
+      background: var(--paper);
+      color: var(--rust);
+    }
+
+    .sidebar-lessons li a.active {
+      color: var(--rust);
+      border-right: 2px solid var(--rust);
+    }
+
+    /* ── Main content ────────────────── */
+    .main {
+      padding: 80px 64px;
+    }
+
+    /* ── Page header ─────────────────── */
+    .page-header {
+      margin-bottom: 72px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .page-header-eyebrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .page-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .page-header h1 em { font-style: italic; }
+
+    .page-header .central-question {
+      font-family: var(--body);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--saffron);
+      margin-bottom: 32px;
+    }
+
+    .page-header p {
+      color: var(--ink-soft);
+      max-width: 600px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .grade-facts {
+      display: flex;
+      gap: 40px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+      flex-wrap: wrap;
+    }
+
+    .grade-fact-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .grade-fact-value {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    /* ── Sections ────────────────────── */
+    .section {
+      margin-bottom: 72px;
+      padding-bottom: 72px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section:last-child {
+      border-bottom: none;
+    }
+
+    .section-number {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--saffron);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .section h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 24px;
+      color: var(--ink);
+    }
+
+    .section h2 em { font-style: italic; }
+
+    .section p {
+      color: var(--ink-soft);
+      margin-bottom: 18px;
+      max-width: 640px;
+    }
+
+    /* ── Pull quote ──────────────────── */
+    .pull-quote {
+      border-left: 3px solid var(--saffron);
+      padding: 18px 28px;
+      margin: 36px 0;
+      background: var(--paper);
+    }
+
+    .pull-quote p {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.65;
+      max-width: 100%;
+    }
+
+    /* ── Year overview table ─────────── */
+    .unit-overview-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 32px;
+    }
+
+    .unit-overview-table th {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      border-bottom: 1px solid var(--rule);
+      padding: 8px 16px 8px 0;
+      text-align: left;
+      font-weight: 500;
+    }
+
+    .unit-overview-table td {
+      padding: 16px 16px 16px 0;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .unit-overview-table td:first-child {
+      font-family: var(--serif);
+      font-weight: 500;
+      color: var(--ink);
+      white-space: nowrap;
+      padding-right: 24px;
+      font-size: 0.95rem;
+    }
+
+    .unit-overview-table td:nth-child(2) {
+      color: var(--ink-mute);
+      font-style: italic;
+      padding-right: 24px;
+    }
+
+    /* ── Unit cards ──────────────────── */
+    .unit-card {
+      margin-bottom: 56px;
+    }
+
+    .unit-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 4px;
+    }
+
+    .unit-number {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      white-space: nowrap;
+    }
+
+    .unit-card h3 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .unit-question {
+      font-family: var(--body);
+      font-style: italic;
+      color: var(--rust);
+      margin: 8px 0 20px;
+      font-size: 0.95rem;
+    }
+
+    .unit-desc {
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 24px;
+    }
+
+    .unit-makes {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--ink-mute);
+      margin-bottom: 20px;
+    }
+
+    .unit-makes strong {
+      color: var(--ink-soft);
+    }
+
+    /* ── Lesson list ─────────────────── */
+    .lesson-list {
+      list-style: none;
+      border-top: 1px solid var(--rule);
+    }
+
+    .lesson-list li {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .lesson-list li a {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 14px 0;
+      text-decoration: none;
+      transition: background 0.15s;
+      border-radius: 2px;
+    }
+
+    .lesson-list li a:hover .lesson-title { color: var(--rust); }
+    .lesson-list li a:hover .lesson-arrow { opacity: 1; transform: translateX(0); }
+
+    .lesson-num {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--ink-mute);
+      white-space: nowrap;
+      min-width: 48px;
+    }
+
+    .lesson-title {
+      font-family: var(--body);
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      transition: color 0.15s;
+      flex: 1;
+    }
+
+    .lesson-duration {
+      font-family: var(--sans);
+      font-size: 11px;
+      color: var(--ink-mute);
+      white-space: nowrap;
+    }
+
+    .lesson-arrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      color: var(--rust);
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity 0.15s, transform 0.15s;
+    }
+
+    .lesson-tag {
+      font-family: var(--sans);
+      font-size: 10px;
+      padding: 2px 8px;
+      background: #EDF5EE;
+      color: #2D6A35;
+      border-radius: 2px;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    .lesson-tag.jataka {
+      background: #F5F0E8;
+      color: #7A5C28;
+    }
+
+    /* ── Bloom's & teacher notes ─────── */
+    .info-row {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin: 32px 0;
+      padding: 24px 28px;
+      background: var(--paper);
+      border-radius: 2px;
+    }
+
+    .info-item-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .info-item-value {
+      font-family: var(--body);
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    /* ── Plants ahead ────────────────── */
+    .plants-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      font-size: 0.9rem;
+    }
+
+    .plants-table th {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      border-bottom: 1px solid var(--rule);
+      padding: 8px 16px 8px 0;
+      text-align: left;
+      font-weight: 500;
+    }
+
+    .plants-table td {
+      padding: 12px 16px 12px 0;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .plants-table td:first-child {
+      font-family: var(--body);
+      font-style: italic;
+      color: var(--ink);
+      padding-right: 28px;
+      white-space: nowrap;
+    }
+
+    /* ── Footer ──────────────────────── */
+    .page-footer {
+      border-top: 1px solid var(--rule);
+      padding: 40px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 48px;
+    }
+
+    .page-footer a {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .page-footer a:hover { color: var(--rust); }
+
+    .page-footer-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      color: var(--ink-mute);
+    }
+
+    /* ── Responsive ──────────────────── */
+    @media (max-width: 800px) {
+      .site-nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .page-wrap { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .main { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">The Dharma Program</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Overview</a></li>
+    <li><a href="index.html#grades">All Grades</a></li>
+    <li><a href="lesson-g1u1c1.html">Sample Lesson →</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- ── Sidebar ─────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-grade">Grade 1</div>
+    <div class="sidebar-title">The Circle of Kindness</div>
+
+    <div class="sidebar-unit">
+      <span class="sidebar-unit-label">Unit 1</span>
+      <ul class="sidebar-lessons">
+        <li><a href="lesson-g1u1c1.html">C1 · The Sound of Kindness</a></li>
+        <li><a href="#">C2 · Six Little Syllables</a></li>
+        <li><a href="#">C3 · Flags in the Wind</a></li>
+        <li><a href="#">C4 · Painting Our Wishes</a></li>
+        <li><a href="#">C5 · Finishing &amp; Sharing</a></li>
+        <li><a href="#">C6 · Hoisting Day</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-unit">
+      <span class="sidebar-unit-label">Unit 2</span>
+      <ul class="sidebar-lessons">
+        <li><a href="#">C1 · A Tree Who Loved a Boy</a></li>
+        <li><a href="#">C2 · Giving and Getting</a></li>
+        <li><a href="#">C3 · Making the Crown</a></li>
+        <li><a href="#">C4 · The Gratitude Circle</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-unit">
+      <span class="sidebar-unit-label">Unit 3</span>
+      <ul class="sidebar-lessons">
+        <li><a href="#">C1 · Born on a Lotus</a></li>
+        <li><a href="#">C2 · The Precious Teacher</a></li>
+        <li><a href="#">C3 · Drawing the Lotus Lake</a></li>
+        <li><a href="#">C4 · Our Lotus Gallery</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-unit">
+      <span class="sidebar-unit-label">Unit 4</span>
+      <ul class="sidebar-lessons">
+        <li><a href="#">C1 · The Brave Little Parrot</a></li>
+        <li><a href="#">C2 · Do Bugs Feel?</a></li>
+        <li><a href="#">C3 · Watching Closely</a></li>
+        <li><a href="#">C4 · The Rescue</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-unit">
+      <span class="sidebar-unit-label">Unit 5</span>
+      <ul class="sidebar-lessons">
+        <li><a href="#">C1 · A Very Special Baby</a></li>
+        <li><a href="#">C2 · He Was Little Like Us</a></li>
+        <li><a href="#">C3 · Making Our Book Pages</a></li>
+        <li><a href="#">C4 · Reading Our Book</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-unit">
+      <span class="sidebar-unit-label">Unit 6 — Jataka Library</span>
+      <ul class="sidebar-lessons">
+        <li><a href="#">The Brave Little Parrot</a></li>
+        <li><a href="#">The Rabbit Who Overcame Fear</a></li>
+        <li><a href="#">The Hunter and the Quail</a></li>
+        <li><a href="#">The Fish King</a></li>
+        <li><a href="#">A Friend to All</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ── Main content ───────────────────────────── -->
+  <main class="main">
+
+    <header class="page-header">
+      <p class="page-header-eyebrow">Grade 1 · Ages 6–7 · The Circle of Kindness</p>
+      <h1>Grade 1 —<br/><em>The Circle of Kindness</em></h1>
+      <p class="central-question">Central question: How do we send kindness to others we cannot see?</p>
+      <p>
+        Children in Grade 1 spend the year learning that kindness is not only a feeling — it is something that can be made, sent, spoken, and practised with the whole body. Every unit produces something physical. By June, the room itself is evidence of what students have learned.
+      </p>
+      <p>
+        This is the foundation year. The prayers, stories, and practices introduced here will be carried forward and deepened across every grade that follows.
+      </p>
+
+      <div class="grade-facts">
+        <div>
+          <span class="grade-fact-label">Units</span>
+          <span class="grade-fact-value">6 (5 fixed + 1 rotating)</span>
+        </div>
+        <div>
+          <span class="grade-fact-label">Lessons</span>
+          <span class="grade-fact-value">27 total</span>
+        </div>
+        <div>
+          <span class="grade-fact-label">Bloom's Level</span>
+          <span class="grade-fact-value">Remember / Understand / Apply</span>
+        </div>
+        <div>
+          <span class="grade-fact-label">Prayer Set</span>
+          <span class="grade-fact-value">Kyap Dro · Om Mani Padme Hung · Manjushri</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Section 01 — Year overview ────────────────── -->
+    <div class="section">
+      <span class="section-number">01</span>
+      <h2>The year at a glance</h2>
+      <p>
+        Each unit picks up from the one before. The connective thread: Unit 1 asks where kindness goes when we send it. Unit 2 shows what giving without return looks like. Unit 3 introduces a being who embodied both. Unit 4 brings it down to the smallest scale — if bugs matter, everything does. Unit 5 returns to a great life, showing it began ordinary. Unit 6 runs all year as a rotating library.
+      </p>
+
+      <table class="unit-overview-table">
+        <thead>
+          <tr>
+            <th>Unit</th>
+            <th>Core Question</th>
+            <th>What Students Make</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 — Om Mani Padme Hung &amp; Prayer Flags</td>
+            <td>How can a wish travel?</td>
+            <td>Painted cloth prayer flags</td>
+          </tr>
+          <tr>
+            <td>2 — The Giving Tree</td>
+            <td>What does it mean to love with no reward?</td>
+            <td>Leaf gratitude crown</td>
+          </tr>
+          <tr>
+            <td>3 — Guru Rinpoche's Birth</td>
+            <td>Where do special, wise people come from?</td>
+            <td>Lotus-birth drawing</td>
+          </tr>
+          <tr>
+            <td>4 — Patience &amp; the Bugs</td>
+            <td>Do the smallest creatures matter?</td>
+            <td>Bug rescue observation journal</td>
+          </tr>
+          <tr>
+            <td>5 — Buddha's Birth</td>
+            <td>What makes a life special from the very beginning?</td>
+            <td>Pages of a class book</td>
+          </tr>
+          <tr>
+            <td>6 — Jataka Stories <em>(rotating)</em></td>
+            <td>What can animals teach us about being good?</td>
+            <td>Running story-wisdom wall</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 02 — How lessons work ──────────────── -->
+    <div class="section">
+      <span class="section-number">02</span>
+      <h2>How lessons work at this age</h2>
+      <p>
+        <strong>Remember, Understand, Apply.</strong> Everything is made, moved, or told.
+      </p>
+      <p>
+        At this age, the highest and most honest form of understanding is <em>doing</em> — chanting, drawing, observing, releasing, sharing. The lessons are designed around that. Do not push toward analysis or abstraction. Trust that the doing, done well, is sufficient.
+      </p>
+      <div class="pull-quote">
+        <p>"Making is never the optional part of a lesson. It is the lesson."</p>
+      </div>
+      <p>
+        Each class runs 40 minutes and follows the same arc: <strong>Settle → Remember → Hear → Talk → Make → Surface → Close.</strong> The Opening (5 min) and Closing (3 min) are always the prayer set, led by a rotating student leader. If time runs short, the Debrief absorbs the cut — never the activity.
+      </p>
+
+      <div class="info-row">
+        <div>
+          <span class="info-item-label">Opening (fixed)</span>
+          <span class="info-item-value">5 minutes — prayers, student leader</span>
+        </div>
+        <div>
+          <span class="info-item-label">Lesson body</span>
+          <span class="info-item-value">32 minutes — flexible, activity protected</span>
+        </div>
+        <div>
+          <span class="info-item-label">Closing (fixed)</span>
+          <span class="info-item-value">3 minutes — prayers, one takeaway sentence</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 03 — Unit 1 ──────────────────────── -->
+    <div class="section" id="unit-1">
+      <span class="section-number">Unit 1 · 6 classes</span>
+      <h2>Om Mani Padme Hung<br/>&amp; Prayer Flags</h2>
+      <p class="unit-question" style="font-family: var(--body); font-style: italic; color: var(--rust); margin-bottom: 20px; font-size: 0.95rem;">How can a wish travel to someone far away?</p>
+      <p class="unit-desc">
+        Students hear Om Mani Padme Hung for the first time, learn its six syllables, explore how sound carries intention, then paint their own cloth prayer flags and hang them in a small ceremony. The unit ends with Hoisting Day — flags going up outside, wishes sent out.
+      </p>
+      <p class="unit-makes" style="font-family: var(--sans); font-size: 11px; color: var(--ink-mute); margin-bottom: 20px;">
+        <strong style="color: var(--ink-soft);">Students make:</strong> Painted cloth prayer flags — hung outside and kept all year
+      </p>
+      <ul class="lesson-list">
+        <li>
+          <a href="lesson-g1u1c1.html">
+            <span class="lesson-num">C1</span>
+            <span class="lesson-title">The Sound of Kindness</span>
+            <span class="lesson-tag">First class</span>
+            <span class="lesson-duration">40 min</span>
+            <span class="lesson-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="lesson-num">C2</span>
+            <span class="lesson-title">Six Little Syllables</span>
+            <span class="lesson-duration">40 min</span>
+            <span class="lesson-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="lesson-num">C3</span>
+            <span class="lesson-title">Flags in the Wind</span>
+            <span class="lesson-duration">40 min</span>
+            <span class="lesson-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="lesson-num">C4</span>
+            <span class="lesson-title">Painting Our Wishes</span>
+            <span class="lesson-duration">40 min</span>
+            <span class="lesson-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="lesson-num">C5</span>
+            <span class="lesson-title">Finishing &amp; Sharing</span>
+            <span class="lesson-duration">40 min</span>
+            <span class="lesson-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="lesson-num">C6</span>
+            <span class="lesson-title">Hoisting Day</span>
+            <span class="lesson-duration">40 min</span>
+            <span class="lesson-arrow">→</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Section 04 — Unit 2 ──────────────────────── -->
+    <div class="section" id="unit-2">
+      <span class="section-number">Unit 2 · 4 classes</span>
+      <h2>The Giving Tree &amp;<br/>Unconditional Love</h2>
+      <p style="font-family: var(--body); font-style: italic; color: var(--rust); margin-bottom: 20px; font-size: 0.95rem;">What does it mean to love with no reward?</p>
+      <p class="unit-desc">
+        Through Shel Silverstein's <em>The Giving Tree</em>, students encounter the idea of love that keeps giving with nothing asked in return. They identify their own "giving trees," make a leaf gratitude crown, and close with a circle of spoken thanks.
+      </p>
+      <p style="font-family: var(--sans); font-size: 11px; color: var(--ink-mute); margin-bottom: 20px;">
+        <strong style="color: var(--ink-soft);">Students make:</strong> A leaf gratitude crown — worn and shared in the closing circle
+      </p>
+      <ul class="lesson-list">
+        <li>
+          <a href="#">
+            <span class="lesson-num">C1</span>
+            <span class="lesson-title">A Tree Who Loved a Boy</span>
+            <span class="lesson-duration">40 min</span>
+            <span class="lesson-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="lesson-num">C2</span>
+            <span class="lesson-title">Giving and Getting</span>
+            <span class="lesson-duration">40 min</span>
+            <span class="lesson-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="lesson-num">C3</span>
+            <span class="lesson-title">Making the Crown</span>
+            <span class="lesson-duration">40 min</span>
+            <span class="lesson-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="lesson-num">C4</span>
+            <span class="lesson-title">The Gratitude Circle</span>
+            <span class="lesson-duration">40 min</span>
+            <span class="lesson-arrow">→</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Section 05 — Unit 3 ──────────────────────── -->
+    <div class="section" id="unit-3">
+      <span class="section-number">Unit 3 · 4 classes</span>
+      <h2>Guru Rinpoche's Birth</h2>
+      <p style="font-family: var(--body); font-style: italic; color: var(--rust); margin-bottom: 20px; font-size: 0.95rem;">Where do special, wise people come from?</p>
+      <p class="unit-desc">
+        Students hear the story of Guru Rinpoche appearing as a child of light on a lotus in the middle of a lake. They explore what it means for someone to arrive in the world with a purpose, then make their own lotus-birth drawings for a class gallery.
+      </p>
+      <p style="font-family: var(--sans); font-size: 11px; color: var(--ink-mute); margin-bottom: 20px;">
+        <strong style="color: var(--ink-soft);">Students make:</strong> A lotus-birth drawing — presented in a class gallery
+      </p>
+      <ul class="lesson-list">
+        <li><a href="#"><span class="lesson-num">C1</span><span class="lesson-title">Born on a Lotus</span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+        <li><a href="#"><span class="lesson-num">C2</span><span class="lesson-title">The Precious Teacher</span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+        <li><a href="#"><span class="lesson-num">C3</span><span class="lesson-title">Drawing the Lotus Lake</span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+        <li><a href="#"><span class="lesson-num">C4</span><span class="lesson-title">Our Lotus Gallery</span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+    <!-- Section 06 — Unit 4 ──────────────────────── -->
+    <div class="section" id="unit-4">
+      <span class="section-number">Unit 4 · 4 classes</span>
+      <h2>Patience &amp; the Bugs</h2>
+      <p style="font-family: var(--body); font-style: italic; color: var(--rust); margin-bottom: 20px; font-size: 0.95rem;">Do the smallest creatures matter?</p>
+      <p class="unit-desc">
+        Starting from the Jataka tale of the brave little parrot, students explore whether all living things — even insects — have feelings and deserve care. They go outside to observe creatures closely, then carry out a small "rescue" practice. The inquiry introduces ahimsa in its most concrete, touchable form.
+      </p>
+      <p style="font-family: var(--sans); font-size: 11px; color: var(--ink-mute); margin-bottom: 20px;">
+        <strong style="color: var(--ink-soft);">Students make:</strong> A bug rescue observation journal — drawn outdoors, kept all year
+      </p>
+      <ul class="lesson-list">
+        <li><a href="#"><span class="lesson-num">C1</span><span class="lesson-title">The Brave Little Parrot</span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+        <li><a href="#"><span class="lesson-num">C2</span><span class="lesson-title">Do Bugs Feel?</span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+        <li><a href="#"><span class="lesson-num">C3</span><span class="lesson-title">Watching Closely <em>(outdoor class)</em></span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+        <li><a href="#"><span class="lesson-num">C4</span><span class="lesson-title">The Rescue <em>(outdoor class)</em></span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+    <!-- Section 07 — Unit 5 ──────────────────────── -->
+    <div class="section" id="unit-5">
+      <span class="section-number">Unit 5 · 4 classes</span>
+      <h2>Buddha's Birth</h2>
+      <p style="font-family: var(--body); font-style: italic; color: var(--rust); margin-bottom: 20px; font-size: 0.95rem;">What makes a life special from the very beginning?</p>
+      <p class="unit-desc">
+        Students hear about the Buddha's birth — the signs, the prophecy, the wonder — but also that he was once small, young, learning, like them. The unit closes with each student contributing a page to a class book, which is then read aloud together.
+      </p>
+      <p style="font-family: var(--sans); font-size: 11px; color: var(--ink-mute); margin-bottom: 20px;">
+        <strong style="color: var(--ink-soft);">Students make:</strong> One page each for a class book — assembled and read together in C4
+      </p>
+      <ul class="lesson-list">
+        <li><a href="#"><span class="lesson-num">C1</span><span class="lesson-title">A Very Special Baby</span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+        <li><a href="#"><span class="lesson-num">C2</span><span class="lesson-title">He Was Little Like Us</span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+        <li><a href="#"><span class="lesson-num">C3</span><span class="lesson-title">Making Our Book Pages</span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+        <li><a href="#"><span class="lesson-num">C4</span><span class="lesson-title">Reading Our Book</span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+    <!-- Section 08 — Unit 6 ──────────────────────── -->
+    <div class="section" id="unit-6">
+      <span class="section-number">Unit 6 · Rotating library · 5 standalone sessions</span>
+      <h2>Jataka Stories</h2>
+      <p style="font-family: var(--body); font-style: italic; color: var(--rust); margin-bottom: 20px; font-size: 0.95rem;">What can animals teach us about being good?</p>
+      <p class="unit-desc">
+        These five standalone sessions can be taught in any order, interwoven across the year — approximately one every two weeks. Each follows the same pattern: settle → hear the tale → discuss → draw on the story-wisdom wall. The wall grows all year as a visual vocabulary of moral courage.
+      </p>
+      <p style="font-family: var(--sans); font-size: 11px; color: var(--ink-mute); margin-bottom: 20px;">
+        <strong style="color: var(--ink-soft);">Students make:</strong> Drawings on a running story-wisdom wall — accumulates all year
+      </p>
+      <ul class="lesson-list">
+        <li><a href="#"><span class="lesson-num">J1</span><span class="lesson-title">The Brave Little Parrot</span><span class="lesson-tag jataka">Jataka tale</span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+        <li><a href="#"><span class="lesson-num">J2</span><span class="lesson-title">The Rabbit Who Overcame Fear</span><span class="lesson-tag jataka">Jataka tale</span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+        <li><a href="#"><span class="lesson-num">J3</span><span class="lesson-title">The Hunter and the Quail</span><span class="lesson-tag jataka">Jataka tale</span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+        <li><a href="#"><span class="lesson-num">J4</span><span class="lesson-title">The Fish King</span><span class="lesson-tag jataka">Jataka tale</span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+        <li><a href="#"><span class="lesson-num">J5</span><span class="lesson-title">A Friend to All</span><span class="lesson-tag jataka">Jataka tale</span><span class="lesson-duration">40 min</span><span class="lesson-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+    <!-- Section 09 — What Grade 1 plants ───────────── -->
+    <div class="section">
+      <span class="section-number">09</span>
+      <h2>What Grade 1 plants<br/>for the years ahead</h2>
+      <p>
+        When you teach Grade 1, you are not only serving these children — you are laying the ground for every teacher who will teach them in Grades 2 through 8.
+      </p>
+
+      <table class="plants-table">
+        <thead>
+          <tr>
+            <th>Planted in Grade 1</th>
+            <th>Deepened in</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Om Mani Padme Hung — the mantra as sound</td>
+            <td>Grade 2 (meaning) · Grade 8 (philosophy of mind)</td>
+          </tr>
+          <tr>
+            <td>Prayer flags as vehicles for compassion</td>
+            <td>Grade 2 (concentric circles of Bodhichitta)</td>
+          </tr>
+          <tr>
+            <td>Guru Rinpoche's birth story</td>
+            <td>Grade 2 (taming story) · Grade 5 (Padmasambhava and lineage)</td>
+          </tr>
+          <tr>
+            <td>Ahimsa — not harming, even the smallest</td>
+            <td>Grade 3 (Tsethar / life release)</td>
+          </tr>
+          <tr>
+            <td>The Buddha's birth</td>
+            <td>Grade 2 (the full life of the Buddha)</td>
+          </tr>
+          <tr>
+            <td>Jataka tales as a moral vocabulary</td>
+            <td>Grades 2–8 (recurring)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Footer nav ──────────────────────────────── -->
+    <div class="page-footer">
+      <a href="index.html">← All Grades</a>
+      <span class="page-footer-label">Grade 1 · The Circle of Kindness · 27 lessons</span>
+      <a href="lesson-g1u1c1.html">First Lesson →</a>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>

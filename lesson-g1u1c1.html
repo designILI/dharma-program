@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G1.U1.C1 — The Sound of Kindness | The Dharma Program</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #F9F6EF;
+      --paper:    #F2EDE2;
+      --ink:      #1C1714;
+      --ink-soft: #4A3F35;
+      --ink-mute: #8A7B6E;
+      --rust:     #8B3A2A;
+      --saffron:  #C07828;
+      --gold:     #D4A843;
+      --rule:     #DDD5C4;
+      --green:    #2D6A35;
+      --serif:    'Playfair Display', Georgia, serif;
+      --sans:     'Inter', system-ui, sans-serif;
+      --body:     'Lora', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ─────────────────────────── */
+    .site-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 0 48px; height: 56px;
+    }
+    .nav-logo { font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-family: var(--sans); font-size: 12px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-mute); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--rust); }
+
+    /* ── Two-column layout ───────────── */
+    .page-wrap {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    /* ── Sidebar ─────────────────────── */
+    .sidebar {
+      padding: 60px 0 80px;
+      border-right: 1px solid var(--rule);
+      position: sticky;
+      top: 56px;
+      height: calc(100vh - 56px);
+      overflow-y: auto;
+    }
+
+    .sidebar-back {
+      display: block;
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      padding: 0 32px 24px;
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 24px;
+      transition: color 0.2s;
+    }
+    .sidebar-back:hover { color: var(--rust); }
+
+    .sidebar-grade {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      padding: 0 32px;
+      margin-bottom: 8px;
+    }
+
+    .sidebar-unit-name {
+      font-family: var(--sans);
+      font-size: 11px;
+      color: var(--ink-soft);
+      padding: 0 32px;
+      margin-bottom: 28px;
+      line-height: 1.4;
+    }
+
+    .sidebar-toc-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      padding: 0 32px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .sidebar-toc {
+      list-style: none;
+    }
+
+    .sidebar-toc li a {
+      display: block;
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--ink-soft);
+      text-decoration: none;
+      padding: 5px 32px;
+      transition: background 0.15s, color 0.15s;
+      line-height: 1.4;
+    }
+
+    .sidebar-toc li a:hover {
+      background: var(--paper);
+      color: var(--rust);
+    }
+
+    /* ── Article ─────────────────────── */
+    .article {
+      padding: 80px 72px;
+      max-width: 760px;
+    }
+
+    /* ── Article header ──────────────── */
+    .article-header {
+      margin-bottom: 64px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .article-eyebrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .eyebrow-sep { color: var(--rule); }
+
+    .article-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .article-header h1 em { font-style: italic; color: var(--rust); }
+
+    .article-header .sub {
+      font-family: var(--body);
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      margin-bottom: 36px;
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .article-meta-row {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding-top: 28px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .article-meta-item { }
+
+    .article-meta-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .article-meta-value {
+      font-family: var(--body);
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    /* ── Objectives box ──────────────── */
+    .objectives {
+      border: 1px solid var(--rule);
+      padding: 28px 32px;
+      margin-bottom: 56px;
+      background: var(--paper);
+    }
+
+    .objectives-title {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 20px;
+    }
+
+    .objectives ul {
+      list-style: none;
+    }
+
+    .objectives ul li {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .objectives ul li:last-child { margin-bottom: 0; }
+
+    .obj-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rust);
+      white-space: nowrap;
+      padding-top: 2px;
+      min-width: 80px;
+    }
+
+    .obj-text { color: var(--ink-soft); }
+
+    /* ── Materials ───────────────────── */
+    .materials {
+      border-left: 3px solid var(--rule);
+      padding: 0 0 0 24px;
+      margin-bottom: 48px;
+    }
+
+    .materials-title {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 16px;
+    }
+
+    .materials ul {
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .materials ul li {
+      color: var(--ink-soft);
+      padding: 5px 0;
+      border-bottom: 1px solid var(--rule);
+      line-height: 1.6;
+    }
+
+    .materials ul li:last-child { border-bottom: none; }
+
+    .materials ul li::before {
+      content: '◦  ';
+      color: var(--saffron);
+    }
+
+    /* ── Lesson body sections ────────── */
+    .lesson-section {
+      margin-bottom: 56px;
+      scroll-margin-top: 80px;
+    }
+
+    .lesson-section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .lesson-section-tag {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--saffron);
+    }
+
+    .lesson-section-time {
+      font-family: var(--sans);
+      font-size: 11px;
+      color: var(--ink-mute);
+      margin-left: auto;
+    }
+
+    .lesson-section h2 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    /* ── Body text ───────────────────── */
+    .lesson-body p {
+      color: var(--ink-soft);
+      margin-bottom: 18px;
+      max-width: 100%;
+    }
+
+    .lesson-body p:last-child { margin-bottom: 0; }
+
+    .lesson-body strong { color: var(--ink); font-weight: 600; }
+
+    .lesson-body em { font-style: italic; }
+
+    /* ── Teacher speech ──────────────── */
+    .teacher-says {
+      font-style: italic;
+      color: var(--ink);
+      background: #FDFAF5;
+      border: 1px solid var(--rule);
+      padding: 14px 20px;
+      margin: 16px 0;
+      border-radius: 2px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ── Pull quote ──────────────────── */
+    .pull-quote {
+      border-left: 3px solid var(--saffron);
+      padding: 18px 28px;
+      margin: 32px 0;
+      background: var(--paper);
+    }
+
+    .pull-quote p {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    /* ── Note callout ────────────────── */
+    .note {
+      background: #F5F0E8;
+      border-left: 3px solid var(--saffron);
+      padding: 14px 20px;
+      margin: 20px 0;
+      font-size: 0.88rem;
+    }
+
+    .note p { color: var(--ink-soft); margin: 0; line-height: 1.65; }
+    .note-label { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--saffron); margin-bottom: 6px; display: block; }
+
+    /* ── Response scaffold ───────────── */
+    .response-examples {
+      margin: 20px 0;
+      border: 1px solid var(--rule);
+    }
+
+    .response-example {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.88rem;
+    }
+
+    .response-example:last-child { border-bottom: none; }
+
+    .response-type {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 6px;
+    }
+
+    .response-example p { color: var(--ink-soft); margin: 0; line-height: 1.6; }
+
+    /* ── Teacher notes ───────────────── */
+    .teacher-notes {
+      margin-top: 48px;
+      border-top: 2px solid var(--saffron);
+      padding-top: 32px;
+    }
+
+    .teacher-notes-title {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 24px;
+    }
+
+    .teacher-notes-block {
+      margin-bottom: 24px;
+    }
+
+    .teacher-notes-block-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      margin-bottom: 8px;
+    }
+
+    .teacher-notes-block p {
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+
+    .reflection-fields {
+      border: 1px solid var(--rule);
+      padding: 20px 24px;
+      font-size: 0.88rem;
+    }
+
+    .reflection-field {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink-mute);
+    }
+
+    .reflection-field:last-child { border-bottom: none; }
+
+    .reflection-field-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 6px;
+    }
+
+    .reflection-field-line {
+      border-bottom: 1px solid var(--rule);
+      height: 24px;
+      margin-top: 4px;
+    }
+
+    /* ── Parent connection ───────────── */
+    .parent-connection {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      padding: 24px 28px;
+      margin-top: 40px;
+    }
+
+    .parent-connection-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .parent-connection p {
+      font-family: var(--body);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ── Lesson navigation ───────────── */
+    .lesson-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px 0;
+      border-top: 1px solid var(--rule);
+      margin-top: 64px;
+    }
+
+    .lesson-nav a {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .lesson-nav a:hover { color: var(--rust); }
+
+    .lesson-nav-center {
+      font-family: var(--sans);
+      font-size: 11px;
+      color: var(--ink-mute);
+      text-align: center;
+    }
+
+    /* ── Responsive ──────────────────── */
+    @media (max-width: 800px) {
+      .site-nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .page-wrap { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .article { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">The Dharma Program</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Overview</a></li>
+    <li><a href="grade-1.html">Grade 1</a></li>
+    <li><a href="grade-1.html#unit-1">Unit 1</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- ── Sidebar ─────────────────────────────────── -->
+  <aside class="sidebar">
+    <a href="grade-1.html" class="sidebar-back">← Grade 1 Overview</a>
+
+    <div class="sidebar-grade">Grade 1 · Unit 1</div>
+    <div class="sidebar-unit-name">Om Mani Padme Hung<br/>&amp; Prayer Flags</div>
+
+    <span class="sidebar-toc-label">This lesson</span>
+    <ul class="sidebar-toc">
+      <li><a href="#opening">Opening — Prayers</a></li>
+      <li><a href="#prior-knowledge">Prior Knowledge</a></li>
+      <li><a href="#mini-lesson">Mini Lesson</a></li>
+      <li><a href="#turn-talk">Turn &amp; Talk</a></li>
+      <li><a href="#activity">Activity</a></li>
+      <li><a href="#debrief">Debrief</a></li>
+      <li><a href="#closing">Closing</a></li>
+      <li><a href="#teacher-notes">Teacher Notes</a></li>
+    </ul>
+  </aside>
+
+  <!-- ── Article ───────────────────────────────── -->
+  <article class="article">
+
+    <header class="article-header">
+      <p class="article-eyebrow">
+        Grade 1
+        <span class="eyebrow-sep">·</span>
+        Unit 1 of 6
+        <span class="eyebrow-sep">·</span>
+        Class 1 of 6
+        <span class="eyebrow-sep">·</span>
+        First class of the year
+      </p>
+      <h1><em>The Sound of Kindness</em></h1>
+      <p class="sub">
+        Students hear Om Mani Padme Hung for the first time — not as information, but as an experience. The sound is offered like a gift, not taught like a lesson.
+      </p>
+      <div class="article-meta-row">
+        <div class="article-meta-item">
+          <span class="article-meta-label">Duration</span>
+          <span class="article-meta-value">40 minutes</span>
+        </div>
+        <div class="article-meta-item">
+          <span class="article-meta-label">Cognitive Principle</span>
+          <span class="article-meta-value">Dual Coding</span>
+        </div>
+        <div class="article-meta-item">
+          <span class="article-meta-label">Bloom's Level</span>
+          <span class="article-meta-value">Remember</span>
+        </div>
+        <div class="article-meta-item">
+          <span class="article-meta-label">Anchor Text</span>
+          <span class="article-meta-value">Moody Cow Meditates</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Objectives ──────────────────────────────── -->
+    <div class="objectives">
+      <div class="objectives-title">Learning Objectives</div>
+      <ul>
+        <li>
+          <span class="obj-label">Know</span>
+          <span class="obj-text">The sound and approximate pronunciation of Om Mani Padme Hung, and that this sound has a name: a mantra.</span>
+        </li>
+        <li>
+          <span class="obj-label">Understand</span>
+          <span class="obj-text">That some sounds are made on purpose — to send a feeling out into the world, the way a bell rings and the sound travels.</span>
+        </li>
+        <li>
+          <span class="obj-label">Be Able To</span>
+          <span class="obj-text">Join in chanting Om Mani Padme Hung with the group, following the teacher's lead, at a slow and steady pace.</span>
+        </li>
+        <li>
+          <span class="obj-label">Feel</span>
+          <span class="obj-text">The gentle surprise of making a sound together and noticing it in the body — something between wonder and settledness.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Materials ───────────────────────────────── -->
+    <div class="materials">
+      <div class="materials-title">Materials Checklist</div>
+      <ul>
+        <li><em>Moody Cow Meditates</em> by Kerry Lee MacLean — mark two pages in advance: the Grandfather teaching breath, and the mind-jar settling. Read only these two sections today.</li>
+        <li>Small hand bell or singing bowl (preferred) — resting on cloth in the centre of the circle before students arrive</li>
+        <li>Chairs arranged in a full circle — no tables visible. The room should look different from an ordinary classroom.</li>
+      </ul>
+    </div>
+
+    <!-- Section: Opening ────────────────────────── -->
+    <div class="lesson-section" id="opening">
+      <div class="lesson-section-header">
+        <span class="lesson-section-tag">Opening</span>
+        <span class="lesson-section-time">5 minutes</span>
+      </div>
+      <div class="lesson-body">
+        <p>Students enter and find seats in the circle. The teacher is already seated, still, the bowl in front of them.</p>
+
+        <div class="teacher-says">"Before we start, I want to show you what we always do at the beginning and end of this class. We say some prayers together. Today, I'll do them first so you can hear what they sound like. After that, whenever you feel ready, you can join in."</div>
+
+        <p>Strike the bowl once. Let the sound fully die before speaking.</p>
+
+        <p>Recite <strong>Kyap Dro</strong> at a pace that allows students to hear each syllable. Hands folded in prayer position — model it without instruction.</p>
+
+        <p>Chant <strong>Om Mani Padme Hung</strong> slowly, seven times. The teacher chants alone, eyes slightly lowered, fully present. Some students will begin to murmur along by round 4 or 5 — let that happen without comment or encouragement. Do not praise them for joining. The joining itself is the reward.</p>
+
+        <p>Recite the <strong>Manjushri Prayer</strong> gently. Strike the bowl once to close.</p>
+
+        <div class="teacher-says">"Good. That's how we begin and end every class. You don't need to remember anything yet — your ears are already doing the work."</div>
+
+        <div class="note">
+          <span class="note-label">Note on student leader</span>
+          <p>Starting from Class 2, one child will lead the opening and closing prayers each class. Today, the teacher leads alone — students need to hear the prayers correctly before they are asked to lead them.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Prior Knowledge ────────────────── -->
+    <div class="lesson-section" id="prior-knowledge">
+      <div class="lesson-section-header">
+        <span class="lesson-section-tag">Prior Knowledge Activation</span>
+        <span class="lesson-section-time">5–8 minutes</span>
+      </div>
+      <div class="lesson-body">
+        <div class="teacher-says">"I want to ask you something before we do anything else. Has anyone ever heard a sound — a really beautiful sound — and felt something happen inside you? Like your body did something?"</div>
+
+        <p>Wait. Give it genuine time. These are six-year-olds and the question is unusual — some will look blank, some will look inward.</p>
+
+        <div class="response-examples">
+          <div class="response-example">
+            <div class="response-type">Strong response</div>
+            <p>A child says: <em>"When my aama sings at night, I feel sleepy and happy."</em> Receive this without elaborating: <em>"Yes. The sound did something inside you. That's exactly it."</em></p>
+          </div>
+          <div class="response-example">
+            <div class="response-type">Surface or misdirected</div>
+            <p>A child says: <em>"I heard a truck and it was really loud."</em> Go deeper: <em>"And when you heard it, did your body do something? Did it jump? Did it go tense?"</em> Help the child notice that any sound lands somewhere in the body.</p>
+          </div>
+          <div class="response-example">
+            <div class="response-type">If no one responds</div>
+            <p>"Think about this: when someone sings a lullaby to a baby, the baby doesn't understand the words. But what happens?" Let them answer. <em>"The sound did that. Not the words — the sound."</em></p>
+          </div>
+        </div>
+
+        <div class="teacher-says">"Today we're going to make a sound together, and I want you to notice what it does inside you."</div>
+      </div>
+    </div>
+
+    <!-- Section: Mini Lesson ────────────────────── -->
+    <div class="lesson-section" id="mini-lesson">
+      <div class="lesson-section-header">
+        <span class="lesson-section-tag">Mini Lesson</span>
+        <span class="lesson-section-time">10–15 minutes</span>
+      </div>
+      <div class="lesson-body">
+        <div class="teacher-says">"We just said some words at the start — did anyone hear them? Can anyone try to say them back?"</div>
+
+        <p>Let two or three children attempt. Receive all attempts warmly. Do not correct pronunciation at this stage — the goal is engagement, not accuracy.</p>
+
+        <div class="teacher-says">"The sound we kept saying, over and over — Om Mani Padme Hung. I'm going to say it one more time, slowly."</div>
+
+        <p>Say it once, very slowly: <strong>Om — Ma — ni — Pad — me — Hung.</strong></p>
+
+        <div class="teacher-says">"Now — just once — try it with me."</div>
+
+        <p>Chant it together, once. Slowly.</p>
+
+        <div class="teacher-says">"How many pieces did you hear? Let's count on our fingers."</div>
+
+        <p>Hold up one finger per syllable. OM. MA. NI. PAD. ME. HUNG. Six fingers up.</p>
+
+        <div class="teacher-says">"Six little pieces. Six sounds. And together, they make one thing: a wish."</div>
+
+        <p>Pause. Do not explain further yet. Let <em>"a wish"</em> hang in the air.</p>
+
+        <p>Now open <em>Moody Cow Meditates</em>. Do not introduce the book formally — simply begin reading from the Grandfather's first appearance. Read to where the Grandfather shows the child how to breathe. Pause the reading.</p>
+
+        <div class="teacher-says">"Let's try this — just like in the book."</div>
+
+        <p><strong>Body Moment:</strong> Guide a slow breath together. In through the nose — count to three — out through the mouth with a long, soft exhale. Three times. The teacher breathes visibly: chest rising, shoulders dropping. After the third breath, speak quietly.</p>
+
+        <div class="teacher-says">"Notice what happened. Did anything change in your body?"</div>
+
+        <p>Do not require answers. Let one or two students speak if they want to. Continue reading to the page where the mind jar settles — the glitter swirls and slowly comes to rest. Close the book.</p>
+
+        <div class="teacher-says">"That's what the sound can do. When we chant Om Mani Padme Hung together — it's like the glitter settling. Things inside us get a little quieter."</div>
+
+        <div class="teacher-says">"Om Mani Padme Hung — that's what we call a mantra. You don't need to remember that word today. But a mantra is a special sound that's been said by kind people for a very, very long time. Hundreds of years. Maybe thousands. And every time someone says it, they're adding their voice to all those other voices."</div>
+
+        <div class="pull-quote">
+          <p>You are building a sense of belonging to something ancient and large. Do not name it. Watch for the child who goes quiet and looks slightly inward — that is the sign the hook has taken. Do not call attention to it. Let it work.</p>
+        </div>
+
+        <p>Now chant Om Mani Padme Hung together, seven times, slowly. By round three or four, let your voice drop slightly so the children's voices are more present. Listen for when the group finds a shared rhythm — this usually happens around round four or five. <strong>That moment of shared rhythm is the lesson's peak.</strong> Let it breathe.</p>
+      </div>
+    </div>
+
+    <!-- Section: Turn and Talk ──────────────────── -->
+    <div class="lesson-section" id="turn-talk">
+      <div class="lesson-section-header">
+        <span class="lesson-section-tag">Turn &amp; Talk</span>
+        <span class="lesson-section-time">3–5 minutes</span>
+      </div>
+      <div class="lesson-body">
+        <p>Assign pairs before the question — tap two neighbouring children to indicate their pair. Do this for the whole class quickly.</p>
+
+        <div class="teacher-says">"Turn to your partner and tell them: when we were chanting just now, did you notice anything? In your body, or in the room? Tell your partner one thing you noticed."</div>
+
+        <p>Signal to begin. Circulate slowly. Listen for: chest, belly, vibration, warmth, stillness, loud, quiet, together. You are not correcting — you are hearing.</p>
+
+        <p>Signal to reconvene with one gentle strike of the bowl. Invite one or two pairs to share briefly. Receive without over-praising. <em>"Yes. You noticed that."</em> is enough.</p>
+      </div>
+    </div>
+
+    <!-- Section: Activity ───────────────────────── -->
+    <div class="lesson-section" id="activity">
+      <div class="lesson-section-header">
+        <span class="lesson-section-tag">Activity</span>
+        <span class="lesson-section-time">15–20 minutes</span>
+      </div>
+      <div class="lesson-body">
+        <div class="note">
+          <span class="note-label">Note on today's activity</span>
+          <p>There is no making activity in Class 1. The activity today <em>is</em> the chanting itself, structured as a gentle practice. This is intentional — Class 1 is about arriving into the sound before anything is made from it.</p>
+        </div>
+
+        <div class="teacher-says">"We're going to chant together one more time — but this time, I want to try something. I'm going to chant and you listen. Then you chant and I'll listen. Then we'll do it together."</div>
+
+        <p><strong>Round 1 — Teacher only:</strong> Chant Om Mani Padme Hung, seven times, unaccompanied. Students sit and listen. Eyes can be open or closed.</p>
+
+        <p><strong>Round 2 — Students only:</strong></p>
+
+        <div class="teacher-says">"Now you. I'll just sit here. You chant. As many times as you like, until it feels done."</div>
+
+        <p>This is unusual and possibly slightly uncomfortable — that slight discomfort is valuable. Students will look to the teacher; the teacher nods gently and is silent. Let them chant. Let them find when to stop. If they trail off after two rounds, that is fine.</p>
+
+        <p><strong>Round 3 — Together:</strong> Join in and chant together seven times. This third round will feel fuller and more confident. End by letting the last "Hung" fade naturally.</p>
+
+        <p>After the final chant: complete quiet for approximately fifteen seconds. No speaking. The teacher sits still. Then, very quietly:</p>
+
+        <div class="teacher-says">"Who were you thinking about, when you chanted? Even if it was no one — that's fine too. Just notice."</div>
+
+        <p>Do not ask students to share this. It is private for today.</p>
+
+        <div class="response-examples">
+          <div class="response-example">
+            <div class="response-type">Scaffold — student who won't chant</div>
+            <p>Some children will sit silently through all three rounds. Do not draw attention to this. Simply model and chant. If a child looks distressed, catch their eye and give a small nod — no words. The chanting being available without pressure is the scaffold.</p>
+          </div>
+          <div class="response-example">
+            <div class="response-type">Extension — deeply engaged student</div>
+            <p>After class, not during, invite privately: <em>"Would you like to be the one who leads the chanting next time? You don't have to — but I saw you really listening."</em> This is the seed for the student leader role in Class 2.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Debrief ────────────────────────── -->
+    <div class="lesson-section" id="debrief">
+      <div class="lesson-section-header">
+        <span class="lesson-section-tag">Debrief</span>
+        <span class="lesson-section-time">5 minutes</span>
+      </div>
+      <div class="lesson-body">
+        <p>Remain in the circle. Students do not move.</p>
+
+        <div class="teacher-says">"Here is something I want to ask you, and you can think about it even after you leave today. When you ring a bell —"</div>
+
+        <p><em>[Strike the bowl once. Let the sound die completely.]</em></p>
+
+        <div class="teacher-says">"— the sound goes out into the room. You can't see it. But it's really there, isn't it? You can hear it."</div>
+
+        <div class="teacher-says">"Om Mani Padme Hung is like that. When we say it, the sound goes out. Where it goes — that's something we'll talk about more. But today, you made that sound. All of you, and me. That sound was real."</div>
+
+        <p>Pause.</p>
+
+        <div class="teacher-says">"This whole year, we're going to think about one question together. I'll tell it to you now, and we'll keep coming back to it:"</div>
+
+        <div class="pull-quote">
+          <p>"How can a wish travel to someone far away?"</p>
+        </div>
+
+        <p>Repeat the question once, slowly. Do not answer it. Do not invite answers today. Let it sit.</p>
+      </div>
+    </div>
+
+    <!-- Section: Closing ────────────────────────── -->
+    <div class="lesson-section" id="closing">
+      <div class="lesson-section-header">
+        <span class="lesson-section-tag">Closing</span>
+        <span class="lesson-section-time">3 minutes</span>
+      </div>
+      <div class="lesson-body">
+        <div class="teacher-says">"Let's close the same way we opened."</div>
+
+        <p>The teacher leads the prayer set again: Kyap Dro, Om Mani Padme Hung (seven times), Manjushri Prayer. Strike the bowl once to close.</p>
+
+        <div class="teacher-says">"Before you go — take that question with you. How can a wish travel? Maybe you'll notice something before next class."</div>
+      </div>
+    </div>
+
+    <!-- Teacher Notes ────────────────────────────── -->
+    <div class="teacher-notes" id="teacher-notes">
+      <div class="teacher-notes-title">Teacher Notes</div>
+
+      <div class="teacher-notes-block">
+        <div class="teacher-notes-block-label">Curriculum guidance <em>(read before class)</em></div>
+        <p>
+          Students now have the sound of Om Mani Padme Hung in their bodies. In Class 2, begin by asking them to reproduce it — don't play it for them first. Trust that it is there.
+        </p>
+        <p>
+          Also carry forward: the question <em>"How can a wish travel?"</em> should be left completely unanswered going into Class 2. Resist the urge to answer it in closing conversation.
+        </p>
+      </div>
+
+      <div class="teacher-notes-block">
+        <div class="teacher-notes-block-label">My reflection <em>(complete after class)</em></div>
+        <div class="reflection-fields">
+          <div class="reflection-field">
+            <div class="reflection-field-label">Timing</div>
+            <div class="reflection-field-line"></div>
+          </div>
+          <div class="reflection-field">
+            <div class="reflection-field-label">Energy &amp; engagement</div>
+            <div class="reflection-field-line"></div>
+            <div class="reflection-field-line" style="margin-top: 8px;"></div>
+          </div>
+          <div class="reflection-field">
+            <div class="reflection-field-label">Students to follow up</div>
+            <div class="reflection-field-line"></div>
+          </div>
+          <div class="reflection-field">
+            <div class="reflection-field-label">What to change</div>
+            <div class="reflection-field-line"></div>
+            <div class="reflection-field-line" style="margin-top: 8px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parent Connection ────────────────────────── -->
+    <div class="parent-connection">
+      <span class="parent-connection-label">Parent Connection</span>
+      <p>"This week in Dharma, your child heard Om Mani Padme Hung — a Buddhist mantra — for the first time, and chanted it together with their class. You can ask them: 'Can you teach me the sound you learned? Can we say it together?'"</p>
+    </div>
+
+    <!-- Lesson nav ──────────────────────────────── -->
+    <div class="lesson-nav">
+      <a href="grade-1.html">← Grade 1 Overview</a>
+      <div class="lesson-nav-center">
+        Class 1 of 6 · Unit 1
+      </div>
+      <a href="#">C2 · Six Little Syllables →</a>
+    </div>
+
+  </article>
+</div>
+
+</body>
+</html>
