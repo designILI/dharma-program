@@ -7,6 +7,10 @@ const lessonsDir = path.join(root, 'lessons');
 fs.mkdirSync(lessonsDir, { recursive: true });
 
 const esc = (s='') => s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+const rebrand = (s='') => s
+  .replace(/\bthe Dharma Program\b/gi,'Hidden Land Dharma')
+  .replace(/\bour Dharma program\b/gi,'Hidden Land Dharma')
+  .replace(/\bDharma Program\b/gi,'Hidden Land Dharma');
 const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const inline = s => esc(s)
   .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
@@ -15,7 +19,7 @@ const inline = s => esc(s)
   .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2">$1</a>');
 
 function markdown(md, {skipFirst=0}={}) {
-  const lines = md.split(/\r?\n/).slice(skipFirst); let out='', para=[], list=null, quote=[];
+  const lines = rebrand(md).split(/\r?\n/).slice(skipFirst); let out='', para=[], list=null, quote=[];
   const flushPara=()=>{if(para.length){out+=`<p>${inline(para.join(' '))}</p>`;para=[]}};
   const flushList=()=>{if(list){out+=`</${list}>`;list=null}};
   const flushQuote=()=>{if(quote.length){out+=`<blockquote><p>${inline(quote.join(' '))}</p></blockquote>`;quote=[]}};
@@ -36,13 +40,13 @@ function markdown(md, {skipFirst=0}={}) {
   }flushPara();flushList();flushQuote();return out;
 }
 
-function shell(title, body, nav='') {return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)} | The Dharma Program</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="${nav}assets/curriculum.css"></head><body><nav class="nav"><a class="nav-logo" href="${nav}index.html">The Dharma Program</a><div class="nav-links"><a href="${nav}index.html">Overview</a><a href="${nav}grade-1.html">Grade 1</a><a href="${nav}grade-2.html">Grade 2</a><a href="${nav}grade-3.html">Grade 3</a><a href="${nav}grade-4.html">Grade 4</a><a href="${nav}grade-5.html">Grade 5</a><a href="${nav}grade-6.html">Grade 6</a><a href="${nav}grade-7.html">Grade 7</a><a href="${nav}grade-8.html">Grade 8</a></div></nav>${body}</body></html>`}
+function shell(title, body, nav='') {return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(rebrand(title))} | Hidden Land Dharma</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="${nav}assets/curriculum.css"></head><body><nav class="nav"><a class="nav-logo" href="${nav}index.html">Hidden Land Dharma</a><div class="nav-links"><a href="${nav}index.html">Overview</a><a href="${nav}grade-1.html">Grade 1</a><a href="${nav}grade-2.html">Grade 2</a><a href="${nav}grade-3.html">Grade 3</a><a href="${nav}grade-4.html">Grade 4</a><a href="${nav}grade-5.html">Grade 5</a><a href="${nav}grade-6.html">Grade 6</a><a href="${nav}grade-7.html">Grade 7</a><a href="${nav}grade-8.html">Grade 8</a></div></nav>${body}</body></html>`}
 
 const all=[];
 for(let grade=1;grade<=8;grade++){
   const dir=path.join(contentRoot,`Grade-${grade}`);
   for(const file of fs.readdirSync(dir).filter(f=>/^G\d+\.U\d+\.C\d+.*\.md$/.test(f)).sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}))){
-    const md=fs.readFileSync(path.join(dir,file),'utf8');const code=file.match(/G(\d+)\.U(\d+)\.C(\d+)/);const [,g,u,c]=code;
+    const md=rebrand(fs.readFileSync(path.join(dir,file),'utf8'));const code=file.match(/G(\d+)\.U(\d+)\.C(\d+)/);const [,g,u,c]=code;
     const title=(md.match(/^#\s+.+?—\s+(.+)$/m)?.[1]||file.replace(/\.md$/,'').split('_')[1].replaceAll('-',' ')).trim();
     const duration=md.match(/\*Duration:\s*([^*]+)\*/i)?.[1].trim()||'40 minutes';
     const cognitive=md.match(/\*\*Cognitive Principle Featured:\*\*\s*([^—\n]+)/i)?.[1].trim()||'See lesson plan';
@@ -60,7 +64,7 @@ for(let i=0;i<all.length;i++){
 }
 
 for(let grade=1;grade<=8;grade++){
-  const items=all.filter(x=>x.grade===grade), overviewFile=path.join(contentRoot,`Grade-${grade}`,`GRADE-${grade}-OVERVIEW.md`), overviewMd=fs.readFileSync(overviewFile,'utf8');
+  const items=all.filter(x=>x.grade===grade), overviewFile=path.join(contentRoot,`Grade-${grade}`,`GRADE-${grade}-OVERVIEW.md`), overviewMd=rebrand(fs.readFileSync(overviewFile,'utf8'));
   const rawTitle=overviewMd.match(/^#\s+(.+)$/m)?.[1]||`Grade ${grade}`;const subtitle=overviewMd.match(/^##\s+(.+)$/m)?.[1]||'';
   const titleMap={1:'The Circle of Kindness',2:'The Widening Circle',3:'Compassion in Action',4:'The Language of Ritual',5:'The Wheel of Existence',6:'Death & What It Asks of Us',7:'Teaching as Practice',8:'The Nature of Mind'};const ageMap={1:'6–7',2:'7–8',3:'8–9',4:'9–10',5:'10–11',6:'11–12',7:'12–13',8:'13–14'};
   const unitTitleMap={
