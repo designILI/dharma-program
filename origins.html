@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origins | Hidden Land Dharma</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@200;300;400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8d08a;
+    --gold-dim: rgba(201,168,76,0.15);
+    --bg: #0a0805;
+    --bg2: #110e08;
+    --text: #e8e0d0;
+    --muted: rgba(232,224,208,0.45);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    overflow-x: hidden;
+  }
+
+  .origins-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.15rem 2rem;
+    background: linear-gradient(to bottom, rgba(10,8,5,0.96), rgba(10,8,5,0));
+  }
+
+  .origins-brand, .origins-links a {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .origins-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.03em;
+  }
+
+  .origins-links { display: flex; gap: 1.5rem; }
+  .origins-links a {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .origins-links a:hover, .origins-links a[aria-current="page"] { color: var(--gold-light); }
+
+  @media (max-width: 620px) {
+    .origins-nav { padding: 1rem 1.25rem; }
+    .origins-links a:not([aria-current="page"]) { display: none; }
+  }
+
+  /* ── Canvas for floating symbols ── */
+  #symbolCanvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ── Sections ── */
+  section {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: radial-gradient(ellipse at 50% 60%, rgba(201,168,76,0.07) 0%, transparent 70%);
+  }
+
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 300;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.3s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    max-width: 800px;
+    opacity: 0;
+    animation: fadeUp 1.4s ease 0.6s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    opacity: 0;
+    animation: fadeUp 1.4s ease 1s forwards;
+  }
+
+  .hero-line {
+    margin-top: 3.5rem;
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    opacity: 0;
+    animation: fadeUp 1.4s ease 1.3s forwards;
+  }
+
+  /* ── INTRO QUOTE ── */
+  #intro {
+    padding: 12rem 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .big-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.55;
+    max-width: 780px;
+    text-align: center;
+    color: var(--text);
+    border-left: none;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .big-quote::before {
+    content: '\201C';
+    font-size: 6rem;
+    color: var(--gold);
+    opacity: 0.3;
+    position: absolute;
+    top: -2.5rem;
+    left: -1rem;
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1;
+  }
+  .big-quote.visible { opacity: 1; transform: none; }
+  .quote-attr {
+    margin-top: 1.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+  }
+
+  /* ── TEACHINGS GRID ── */
+  #teachings {
+    padding: 6rem 2rem 12rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 5rem;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .section-label.visible { opacity: 1; transform: none; }
+
+  .teaching-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.08);
+    margin-bottom: 1px;
+  }
+
+  .teaching-cell {
+    padding: 4rem 3.5rem;
+    background: var(--bg);
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s ease, transform 0.9s ease, background 0.3s ease;
+  }
+  .teaching-cell:hover {
+    background: var(--bg2);
+  }
+  .teaching-cell.visible { opacity: 1; transform: none; }
+
+  .teaching-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75rem;
+    color: var(--gold);
+    opacity: 0.6;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+  }
+
+  .teaching-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+
+  .teaching-body {
+    font-size: 0.8rem;
+    line-height: 1.85;
+    color: var(--muted);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+  }
+
+  .teaching-pullquote {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--gold-light);
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+
+  /* Full-width cell */
+  .teaching-cell.full {
+    grid-column: 1 / -1;
+  }
+
+  /* ── SYMBOL DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 5rem 0;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+  .divider.visible { opacity: 1; }
+  .divider-line {
+    flex: 1;
+    max-width: 200px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.3));
+  }
+  .divider-line.right {
+    background: linear-gradient(to left, transparent, rgba(201,168,76,0.3));
+  }
+  .divider-symbol {
+    font-size: 1.4rem;
+    color: var(--gold);
+    opacity: 0.6;
+    animation: spin 20s linear infinite;
+  }
+
+  /* ── CLOSING ── */
+  #closing {
+    padding: 10rem 2rem 14rem;
+    text-align: center;
+    background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 65%);
+  }
+
+  .closing-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 300;
+    line-height: 1.25;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .closing-title.visible { opacity: 1; transform: none; }
+
+  .closing-body {
+    font-size: 0.8rem;
+    line-height: 2;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto;
+    letter-spacing: 0.03em;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease 0.2s, transform 1s ease 0.2s;
+  }
+  .closing-body.visible { opacity: 1; transform: none; }
+
+  .final-symbol {
+    margin-top: 5rem;
+    font-size: 2.5rem;
+    color: var(--gold);
+    opacity: 0.25;
+    display: block;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50%       { opacity: 0.35; transform: scale(1.08); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .teaching-row { grid-template-columns: 1fr; }
+    .teaching-cell { padding: 3rem 2rem; }
+    .big-quote::before { left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="origins-nav" aria-label="Main navigation">
+  <a class="origins-brand" href="index.html">Hidden Land Dharma</a>
+  <div class="origins-links">
+    <a href="index.html">Curriculum</a>
+    <a href="origins.html" aria-current="page">Origins</a>
+    <a href="reference.html">Reference</a>
+  </div>
+</nav>
+
+<canvas id="symbolCanvas"></canvas>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow">Rinpoche's Advice on Dharma Curriculum &nbsp;·&nbsp; Taktse</p>
+  <h1 class="hero-title">
+    The mind is<br><em>the field</em>
+  </h1>
+  <p class="hero-sub">Teachings on intention, compassion, and the art of meeting each being where they are</p>
+  <div class="hero-line"></div>
+</section>
+
+<!-- OPENING QUOTE -->
+<section id="intro">
+  <div>
+    <p class="big-quote reveal">
+      When you make clothes for your body, you have to make them according to the size and shape of your body. You can't just say — square here, long there. You have to make it according to what it has to fit.
+    </p>
+    <p class="quote-attr reveal">— Rinpoche</p>
+  </div>
+</section>
+
+<!-- TEACHINGS -->
+<section id="teachings">
+  <p class="section-label reveal">Six Essential Teachings</p>
+
+  <div class="teaching-row">
+    <div class="teaching-cell reveal">
+      <p class="teaching-num">I</p>
+      <h2 class="teaching-title">The Mind is Everything</h2>
+      <p class="teaching-body">All actions — positive, negative, and neutral — arise from intention. In Tibetan this is <em>kun-long</em>: <em>kun</em> meaning "all," <em>long</em> meaning "to rise." From intention, everything rises. Train the mind and all else follows.</p>
+      <p class="teaching-pullquote">"How do you create a mind that works for universal good?"</p>
+    </div>
+    <div class="teaching-cell reveal" style="transition-delay: 0.15s">
+      <p class="teaching-num">II</p>
+      <h2 class="teaching-title">Meet Each Being Where They Are</h2>
+      <p class="teaching-body">Don't teach university concepts to first graders. Watch what a child is drawn to — that interest is a window into their nature, a trace of their previous life. Teaching through it lands. Teaching past it is lost.</p>
+      <p class="teaching-pullquote">"If a tree is crooked, it can still be useful. Crooked branches are sometimes the most useful of all."</p>
+    </div>
+  </div>
+
+  <div class="teaching-row">
+    <div class="teaching-cell reveal" style="transition-delay: 0.05s">
+      <p class="teaching-num">III</p>
+      <h2 class="teaching-title">Words Point — They Are Not the Destination</h2>
+      <p class="teaching-body">You need words to access meaning, but words alone are not enough. Spiritual language is for an inward journey, not for navigating the world. The same word — <em>yeshe</em>, <em>rigpa</em> — can mean something entirely different in sutra and tantra. Framework is everything.</p>
+      <p class="teaching-pullquote">"It's like a person without fingers trying to climb up a rock."</p>
+    </div>
+    <div class="teaching-cell reveal" style="transition-delay: 0.2s">
+      <p class="teaching-num">IV</p>
+      <h2 class="teaching-title">Ethics as Foundation</h2>
+      <p class="teaching-body">Before enlightenment, simply live by clear principles. Rinpoche returned to Golok — a community known for stealing — and offered four or five simple vows: no drinking, no killing, no lying, no stealing. He did not force. He invited. Now the doors stay open.</p>
+      <p class="teaching-pullquote">"If people live according to ethics, bad people become the minority."</p>
+    </div>
+  </div>
+
+  <div class="teaching-row">
+    <div class="teaching-cell reveal" style="transition-delay: 0.05s">
+      <p class="teaching-num">V</p>
+      <h2 class="teaching-title">Everything Grows from a Seed</h2>
+      <p class="teaching-body">In dharma, nothing happens by accident. All comes from a seed — <em>gyu</em> — but you also need manure and water (<em>khyen</em>) for the seed to grow. Conditions matter as much as potential. The teacher's role is to tend the conditions.</p>
+      <p class="teaching-pullquote">"Buddha never said, 'I'll force my teachings down your throat.' He said, 'I'll provide them — it's up to you to practice.'"</p>
+    </div>
+    <div class="teaching-cell reveal" style="transition-delay: 0.2s">
+      <p class="teaching-num">VI</p>
+      <h2 class="teaching-title">We Are at a Tipping Point</h2>
+      <p class="teaching-body">According to Guru Rinpoche, it is not time that has changed but people's minds — their mindset and priorities. The balance has tipped toward worldly existence. The task now is to graft dharma back into the mind, especially in how we teach the next generation.</p>
+      <p class="teaching-pullquote">"Things could go either way — happiness and the dharma tradition could go way up, or way down."</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- DIVIDER -->
+<div class="divider reveal" style="max-width:700px; margin:0 auto;">
+  <div class="divider-line"></div>
+  <span class="divider-symbol">☸</span>
+  <div class="divider-line right"></div>
+</div>
+
+<!-- CLOSING -->
+<section id="closing">
+  <h2 class="closing-title reveal">
+    Connecting dharma with your own mind is the most important — and the most difficult.
+  </h2>
+  <p class="closing-body reveal">
+    Toopa, Sompa, Gompa.<br>
+    Listening. Thinking. Cultivating.<br><br>
+    This is not a single moment of understanding. It is a practice — tended over time, like a garden, like a fire.
+  </p>
+  <span class="final-symbol">ༀ</span>
+</section>
+
+<script>
+// ── Floating Buddhist Symbols Canvas ──
+const canvas = document.getElementById('symbolCanvas');
+const ctx = canvas.getContext('2d');
+
+const symbols = ['☸', 'ༀ', '❀', '⊕', '✦', '☸', 'ༀ', '✧', '⟁', '☸'];
+const particles = [];
+
+function resize() {
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class Particle {
+  constructor() { this.reset(true); }
+  reset(initial = false) {
+    this.x    = Math.random() * canvas.width;
+    this.y    = initial ? Math.random() * canvas.height : canvas.height + 60;
+    this.sym  = symbols[Math.floor(Math.random() * symbols.length)];
+    this.size = 10 + Math.random() * 22;
+    this.speed= 0.18 + Math.random() * 0.28;
+    this.drift= (Math.random() - 0.5) * 0.3;
+    this.rot  = Math.random() * Math.PI * 2;
+    this.rotSpeed = (Math.random() - 0.5) * 0.004;
+    this.alpha= 0.025 + Math.random() * 0.07;
+    this.life = 0;
+    this.maxLife = 800 + Math.random() * 600;
+  }
+  update() {
+    this.y   -= this.speed;
+    this.x   += this.drift;
+    this.rot += this.rotSpeed;
+    this.life++;
+    if (this.y < -80 || this.life > this.maxLife) this.reset();
+  }
+  draw() {
+    const fade = Math.min(this.life / 120, 1) * Math.min((this.maxLife - this.life) / 120, 1);
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.rot);
+    ctx.globalAlpha = this.alpha * fade;
+    ctx.fillStyle   = '#c9a84c';
+    ctx.font        = `${this.size}px serif`;
+    ctx.textAlign   = 'center';
+    ctx.textBaseline= 'middle';
+    ctx.fillText(this.sym, 0, 0);
+    ctx.restore();
+  }
+}
+
+for (let i = 0; i < 38; i++) particles.push(new Particle());
+
+function loop() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(loop);
+}
+loop();
+
+// ── Scroll Reveal ──
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
