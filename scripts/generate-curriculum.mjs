@@ -84,7 +84,10 @@ for(let grade=1;grade<=8;grade++){
 }
 
 const referenceMd=rebrand(fs.readFileSync(path.join(contentRoot,'CURRICULUM-REFERENCE.md'),'utf8'));
-const referenceHtml=markdown(referenceMd,{skipFirst:1});
+const referenceHtml=markdown(referenceMd,{skipFirst:1}).replace(
+  /<tr><td>(G(\d+)\.U(\d+)\.C(\d+))<\/td><td>(.*?)<\/td>/g,
+  (_,code,grade,unit,lesson,title) => `<tr><td><a class="lesson-ref" href="lessons/g${grade}-u${unit}-c${lesson}.html">${code}</a></td><td><a class="lesson-ref lesson-ref-title" href="lessons/g${grade}-u${unit}-c${lesson}.html">${title}</a></td>`
+);
 const referenceHeads=[...referenceHtml.matchAll(/<h[23] id="([^"]+)">([^<]+)<\/h[23]>/g)].map(m=>({id:m[1],label:m[2]}));
 const referenceBody=`<div class="wrap"><header class="grade-hero"><div class="eyebrow">Teacher reference · Grades 1–8 · 152 lessons</div><h1>Curriculum<br><em>Reference</em></h1><p class="grade-summary">All 152 lessons, all 13 prayers, anchor texts, Buddhist / Universal classifications, and the spiral threads connecting eight years of learning.</p></header><div class="layout"><article class="content">${referenceHtml}</article><aside class="toc"><strong>Reference contents</strong>${referenceHeads.map(h=>`<a href="#${h.id}">${h.label}</a>`).join('')}</aside></div><div class="pager"><a href="index.html">← Overview</a><span>Hidden Land Dharma</span><a href="grade-1.html">Begin Grade 1 →</a></div></div>`;
 fs.writeFileSync(path.join(root,'reference.html'),shell('Curriculum Reference',referenceBody));
