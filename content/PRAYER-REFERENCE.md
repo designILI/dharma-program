@@ -77,11 +77,11 @@
 ## Grade 3 additions
 
 ### 6. Seven-Line Guru Rinpoche Prayer (7-Line Prayer)
-**First introduced:** Grade 3 (heard as listening practice in Grades 1–2; memorised in Grade 3)
+**Grade sequence:** Grade 1 = sound exposure only (teacher chants; students listen). Grade 2 = meaning-first introduction in G2.U3.C3 (line-by-line meaning given before chanting; students join optionally). Grade 3 = full memorisation (meaning already established; students bring the prayer fully into the body).
 **Tibetan name:** ཚིག་བདུན་གསོལ་འདེབས (Tshik Dün Soldebs)
 **English meaning:** A seven-line invocation of Guru Rinpoche (Padmasambhava), describing his miraculous birth on a lotus in Danakosha Lake and invoking his blessings. One of the most widely recited prayers in Nyingma and Tibetan Buddhist traditions.
 **Pronunciation guidance:** *(fill in with resident teacher — this prayer has regional variation)*
-**In the classroom:** Students in Grade 1 and 2 *hear* this prayer chanted by the teacher; they do not recite it. In Grade 3, they begin learning it with meaning first. Never introduce memorisation before meaning.
+**In the classroom:** The meaning-first protocol for this prayer happens in Grade 2 (G2.U3.C3) — the teacher walks through each of the seven lines in plain language before students hear the full prayer chanted. Grade 3 builds on that foundation: students now memorise what they already understand. Never introduce memorisation before meaning. If a student has joined the program in Grade 3 without the Grade 2 foundation, give the line-by-line meaning before proceeding to memorisation.
 
 ---
 
@@ -89,7 +89,7 @@
 **First introduced:** Grade 3
 **English meaning:** A brief prayer recited before eating, offering the food to the Three Jewels and dedicating the nourishment to the benefit of all beings.
 **Pronunciation guidance:** *(fill in with resident teacher)*
-**In the classroom:** Connected to Grade 3's theme of compassion in action — even ordinary acts like eating can be turned into offerings. Introduced alongside the Tsethar (life release) unit.
+**In the classroom:** Connected to Grade 3's theme of compassion in action — even ordinary acts like eating can be turned into offerings. Introduced alongside the Tsethar (life release) unit. This prayer is closing only — it does not appear in the opening prayer set.
 
 ---
 
@@ -128,29 +128,30 @@
 **Tibetan name:** སྒྲོལ་མ (Drolma / Dolma) — Tara
 **English meaning:** A prayer to Tara, the female bodhisattva of swift compassion. "Dolma" means "she who liberates." The prayer invokes her protection, healing, and swift action on behalf of beings in need.
 **Pronunciation guidance:** *Dol* as in "dole." *ma* as in "ma."
-**In the classroom:** Introduced in Grade 6 alongside the White Tara and Green Tara unit. Students learn the prayer with meaning first — who Tara is, what she represents, why she is depicted in two forms. This prayer is especially significant for the female students in the class: Tara is a model of awakening in a female form. See the spiral touchpoint note in G6.U3.C2 about pairing Tara-as-archetype with Pajapati-as-history.
+**In the classroom:** Introduced in Grade 6 alongside the White Tara and Green Tara unit (G6.U3.C3). Students learn the prayer with meaning first — who Tara is, what she represents, why she is depicted in two forms. This prayer is especially significant for the female students in the class: Tara is a model of awakening in a female form. See the spiral touchpoint note in G6.U3.C2 about pairing Tara-as-archetype with Pajapati-as-history.
 
 ---
 
 ## Grade 7 addition
 
 ### 12. Rewo Sang Chod — Smoke Offering Prayer
-**First introduced:** Grade 7
-**Tibetan name:** རི་བོ་བསང་མཆོད (Riwo Sang Chod)
+**First introduced:** Grade 7, Unit 1, Class 1 (G7.U1.C1). Explored in depth in Grade 7, Unit 4 (the Panglhabsol unit).
+**Tibetan name:** རི་བོ་བསང་མཆོད (Riwo / Rewo Sang Chod)
 **English meaning:** "Mountain smoke offering." A purification practice in which incense or fragrant substances are burned and offered to the local spirits, protectors, and all beings in the area, while prayers are recited for their benefit and the purification of obstacles.
 **Pronunciation guidance:** *Ri* as in "ree." *wo* as in "woe." *Sang* as in "song." *Chod* as in "choe."
-**In the classroom:** Introduced in Grade 7 alongside the Panglhabsol unit. This prayer has a strong embodied quality — the smoke, the outdoors, the sense of offering to an unseen community. Grade 7 students are ready for the practice's full dimension: honouring place, acknowledging what protects us, recognising that we exist within a web of relationships that extends beyond the visible.
+**Romanisation note:** Both "Riwo" and "Rewo" appear in the curriculum. Use whichever the school's resident teacher prefers; note the preference here for consistency: *(fill in)*.
+**In the classroom:** First introduced in G7.U1.C1 with the meaning-first protocol — meaning is given in full before students hear or chant the prayer. The prayer recurs throughout Grade 7 and is performed as part of the Panglhabsol ceremony in G7.U4. This prayer has a strong embodied quality — the smoke, the outdoors, the sense of offering to an unseen community. Grade 7 students are ready for the practice's full dimension: honouring place, acknowledging what protects us, recognising that we exist within a web of relationships that extends beyond the visible.
 
 ---
 
 ## Grade 8 addition
 
 ### 13. Tsog Due pa — Tsok Offering Prayer
-**First introduced:** Grade 8
+**First introduced:** Grade 8, Unit 1, Class 1 (G8.U1.C1)
 **Tibetan name:** *(fill in with resident teacher — Tsok prayers vary by tradition and lineage)*
 **English meaning:** The Tsok (or Ganachakra) offering is a feast offering practice in which food, drink, and sacred substances are offered to the Three Jewels and to all beings. It is both a purification practice and a celebration of the inseparability of the sacred and the ordinary.
 **Pronunciation guidance:** *Tsog* — the ts is pronounced together, as in "bits." *Due* as in "doo-ay." *pa* as in "pa."
-**In the classroom:** This is the final prayer added to the repertoire, completing the eight-year ladder. Grade 8 students who have been in the program since Grade 1 now hold the full set. The first time this prayer is introduced, acknowledge what that means: *"You started with Om Mani Padme Hung — one sound. Now you carry the full repertoire. That took eight years."*
+**In the classroom:** This is the final prayer added to the repertoire, completing the eight-year ladder. Grade 8 students who have been in the program since Grade 1 now hold the full set. The first time this prayer is introduced, acknowledge what that means: *"You started with Om Mani Padme Hung — one sound. Now you carry the full repertoire. That took eight years."* This prayer is always last in the sequence — position 13, after Rewo Sang Chod.
 
 ---
 
@@ -165,7 +166,10 @@
 | 5 | + Dechen Monlam | 10 |
 | 6 | + Dolma (Tara Prayer) | 11 |
 | 7 | + Rewo Sang Chod | 12 |
-| 8 | + Tsog Due pa | 13 |
+| 8 | + Tsog Due pa | **13** |
+
+**Correct full sequence for Grades 8 prayer sets:**
+Kyap Dro · Om Mani Padme Hung (7×) · Manjushri Prayer · Sem kye · Ngowa · Seven-Line Guru Rinpoche Prayer · Food Offering Prayer · Sevenline extended form · Dusum Sangay · Dechen Monlam · Dolma / Tara Prayer · Rewo Sang Chod · Tsog Due pa
 
 ---
 

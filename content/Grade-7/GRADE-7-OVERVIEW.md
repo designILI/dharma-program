@@ -111,6 +111,8 @@ Grade 7 is the most logistically complex grade in the curriculum. Three units ha
 
 Pajapati's story is not told in Grade 7. The thread is held.
 
+Note: G7.U4.C4's student-facing Debrief names Pajapati by name as a forward-reference ("for the first time in full — the story of Pajapati") — this is intentional. The name is dropped as a ceremonial anticipation at the year's closing, not as a story touchpoint. The thread's content remains held.
+
 Students have encountered her name and her question in earlier grades. The full story — her walking barefoot, her community of women, her request to the Buddha, Ananda's advocacy, the Buddha's eventual assent, the founding of the first bhikkhuni sangha — belongs to Grade 8. It lands there differently than it would have landed in any earlier grade, because of everything students carry from Grades 1 through 7. Do not introduce it now. Hold the thread.
 
 ---
