@@ -31,6 +31,7 @@ function markdown(md, {skipFirst=0}={}) {
     if(/^---+$/.test(t)){flushPara();flushList();out+='<hr>';continue}
     const ul=t.match(/^[-*]\s+(.+)$/), ol=t.match(/^\d+\.\s+(.+)$/);
     if(ul||ol){flushPara();const type=ul?'ul':'ol';if(list!==type){flushList();out+=`<${type}>`;list=type}out+=`<li>${inline((ul||ol)[1])}</li>`;continue}else flushList();
+    if(/^\*\*[^*]+:\*\*/.test(t)){flushPara();out+=`<p class="label-block">${inline(t)}</p>`;continue}
     if(!t){flushPara();continue}para.push(t);
   }flushPara();flushList();flushQuote();return out;
 }
