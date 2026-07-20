@@ -40,7 +40,7 @@ function markdown(md, {skipFirst=0}={}) {
   }flushPara();flushList();flushQuote();return out;
 }
 
-function shell(title, body, nav='') {return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(rebrand(title))} | Hidden Land Dharma</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="${nav}assets/curriculum.css"></head><body><nav class="nav"><a class="nav-logo" href="${nav}index.html">Hidden Land Dharma</a><div class="nav-links"><a href="${nav}index.html">Overview</a><a href="${nav}grade-1.html">Grade 1</a><a href="${nav}grade-2.html">Grade 2</a><a href="${nav}grade-3.html">Grade 3</a><a href="${nav}grade-4.html">Grade 4</a><a href="${nav}grade-5.html">Grade 5</a><a href="${nav}grade-6.html">Grade 6</a><a href="${nav}grade-7.html">Grade 7</a><a href="${nav}grade-8.html">Grade 8</a></div></nav>${body}</body></html>`}
+function shell(title, body, nav='') {return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(rebrand(title))} | Hidden Land Dharma</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="${nav}assets/curriculum.css"></head><body><nav class="nav"><a class="nav-logo" href="${nav}index.html">Hidden Land Dharma</a><div class="nav-links"><a href="${nav}index.html">Overview</a><a href="${nav}grade-1.html">Grade 1</a><a href="${nav}grade-2.html">Grade 2</a><a href="${nav}grade-3.html">Grade 3</a><a href="${nav}grade-4.html">Grade 4</a><a href="${nav}grade-5.html">Grade 5</a><a href="${nav}grade-6.html">Grade 6</a><a href="${nav}grade-7.html">Grade 7</a><a href="${nav}grade-8.html">Grade 8</a><a href="${nav}reference.html">Reference</a></div></nav>${body}</body></html>`}
 
 const all=[];
 for(let grade=1;grade<=8;grade++){
@@ -83,4 +83,10 @@ for(let grade=1;grade<=8;grade++){
   fs.writeFileSync(path.join(root,`grade-${grade}.html`),shell(rawTitle,body));
 }
 
-console.log(`Generated ${all.length} lesson pages and 8 grade pages.`);
+const referenceMd=rebrand(fs.readFileSync(path.join(contentRoot,'CURRICULUM-REFERENCE.md'),'utf8'));
+const referenceHtml=markdown(referenceMd,{skipFirst:1});
+const referenceHeads=[...referenceHtml.matchAll(/<h[23] id="([^"]+)">([^<]+)<\/h[23]>/g)].map(m=>({id:m[1],label:m[2]}));
+const referenceBody=`<div class="wrap"><header class="grade-hero"><div class="eyebrow">Teacher reference · Grades 1–8 · 152 lessons</div><h1>Curriculum<br><em>Reference</em></h1><p class="grade-summary">All 152 lessons, all 13 prayers, anchor texts, Buddhist / Universal classifications, and the spiral threads connecting eight years of learning.</p></header><div class="layout"><article class="content">${referenceHtml}</article><aside class="toc"><strong>Reference contents</strong>${referenceHeads.map(h=>`<a href="#${h.id}">${h.label}</a>`).join('')}</aside></div><div class="pager"><a href="index.html">← Overview</a><span>Hidden Land Dharma</span><a href="grade-1.html">Begin Grade 1 →</a></div></div>`;
+fs.writeFileSync(path.join(root,'reference.html'),shell('Curriculum Reference',referenceBody));
+
+console.log(`Generated ${all.length} lesson pages, 8 grade pages, and the curriculum reference.`);
