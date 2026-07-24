@@ -13,7 +13,7 @@ Each lesson in Part 3 is tagged:
 | **U** | Universal — the lesson's core theme (grief, identity, empathy, creativity, community) is cross-traditional and accessible to students of any background. |
 | **B+U** | Both — a universal human theme carried within a Buddhist framework, or Buddhist content that opens directly onto universal experience. The lesson works at both levels simultaneously. |
 
-Most lessons are B+U. Pure U lessons tend to be the making/reflecting/sharing classes where the Buddhist scaffolding recedes and the human experience is primary. Pure B lessons are those where the content would be largely meaningless without the tradition as context (specific prayers, specific figures, specific cosmology).
+Most lessons are B+U. Pure U lessons tend to be the making/reflecting/sharing classes where the Buddhist scaffolding recedes and the human experience is primary. Pure B lessons are those where the content may remain opaque without the tradition as context (specific prayers, specific figures, specific cosmology).
 
 ---
 
