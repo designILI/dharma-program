@@ -1,0 +1,77 @@
+.guide-hero {
+  max-width: 920px;
+}
+
+.guide-layout {
+  padding-top: 38px;
+}
+
+.guide-content > p:first-child {
+  font-size: 20px;
+  line-height: 1.65;
+  color: var(--soft);
+}
+
+.guide-content h3 {
+  color: var(--rust);
+}
+
+.guide-callout {
+  margin: 34px 0;
+  padding: 24px 28px;
+  border-left: 3px solid var(--gold);
+  background: var(--panel);
+}
+
+.guide-callout-label {
+  margin-bottom: 8px;
+  color: var(--rust);
+  font: 500 11px var(--sans);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.guide-callout p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.numbered-point {
+  padding-left: 34px;
+  text-indent: -24px;
+}
+
+.table-scroll {
+  margin: 28px 0;
+  overflow-x: auto;
+}
+
+.table-scroll table {
+  margin: 0;
+}
+
+.key-table th {
+  width: 160px;
+  color: var(--rust);
+  font: 500 10px var(--sans);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.nav-links a[aria-current="page"] {
+  color: var(--rust);
+}
+
+@media (max-width: 800px) {
+  .guide-content > p:first-child {
+    font-size: 18px;
+  }
+
+  .guide-callout {
+    padding: 20px;
+  }
+
+  .key-table th {
+    min-width: 130px;
+  }
+}
