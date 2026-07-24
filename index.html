@@ -6,7 +6,7 @@
   <title>Hidden Land Dharma — A K–8 Contemplative Curriculum</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
   <style>
     /* ── Reset & base ──────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,6 +23,7 @@
       --rule:     #DDD5C4;
       --card-bg:  #FFFFFF;
       --serif:    'Playfair Display', Georgia, serif;
+      --display:  'Instrument Serif', 'Playfair Display', Georgia, serif;
       --sans:     'Inter', system-ui, sans-serif;
       --body:     'Lora', Georgia, serif;
     }
@@ -30,6 +31,7 @@
     html { scroll-behavior: smooth; }
 
     body {
+      position: relative;
       background: var(--cream);
       color: var(--ink);
       font-family: var(--body);
@@ -43,8 +45,9 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--cream);
-      border-bottom: 1px solid var(--rule);
+      background: rgba(249, 246, 239, 0.76);
+      border-bottom: 1px solid rgba(120, 97, 74, 0.22);
+      backdrop-filter: blur(16px);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -82,11 +85,64 @@
     .nav-links a:hover { color: var(--rust); }
 
     /* ── Hero ──────────────────────────────────────── */
+    .hero-video-stage {
+      position: absolute;
+      z-index: 0;
+      inset: 0 0 auto;
+      height: max(100svh, 760px);
+      overflow: hidden;
+      pointer-events: none;
+      background: var(--cream);
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0;
+      filter: saturate(0.72) sepia(0.1) contrast(0.88);
+      transform: scale(1.015);
+      will-change: opacity;
+    }
+
+    .hero-video-wash,
+    .hero-video-vignette {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-video-wash {
+      background: linear-gradient(
+        180deg,
+        rgba(249, 246, 239, 0.91) 0%,
+        rgba(249, 246, 239, 0.77) 19%,
+        rgba(249, 246, 239, 0.48) 47%,
+        rgba(249, 246, 239, 0.16) 76%,
+        var(--cream) 100%
+      );
+    }
+
+    .hero-video-vignette {
+      background:
+        linear-gradient(90deg, rgba(59, 40, 26, 0.12), transparent 22%, transparent 78%, rgba(59, 40, 26, 0.12)),
+        radial-gradient(circle at center, transparent 44%, rgba(59, 40, 26, 0.12) 100%);
+      mix-blend-mode: multiply;
+    }
+
     .hero {
-      max-width: 860px;
+      position: relative;
+      z-index: 2;
+      max-width: 1120px;
+      min-height: calc(100svh - 56px);
       margin: 0 auto;
-      padding: 100px 48px 80px;
+      padding: clamp(62px, 10vh, 100px) 48px 54px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .hero-eyebrow {
@@ -96,7 +152,7 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--saffron);
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -114,12 +170,13 @@
     }
 
     .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(2.6rem, 5vw, 3.8rem);
+      font-family: var(--display);
+      font-size: clamp(4.4rem, 8.7vw, 8.4rem);
       font-weight: 400;
-      line-height: 1.2;
+      line-height: 0.86;
+      letter-spacing: -0.045em;
       color: var(--ink);
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
 
     .hero h1 em {
@@ -127,12 +184,22 @@
       color: var(--rust);
     }
 
+    .hero-reading-panel {
+      width: min(100%, 700px);
+      padding: 22px 28px;
+      background: rgba(249, 246, 239, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-radius: 18px;
+      box-shadow: 0 18px 52px rgba(63, 42, 28, 0.1);
+      backdrop-filter: blur(16px);
+    }
+
     .hero-sub {
       font-family: var(--body);
       font-size: 1.05rem;
       color: var(--ink-soft);
       max-width: 620px;
-      margin: 0 auto 48px;
+      margin: 0 auto;
       line-height: 1.8;
     }
 
@@ -144,17 +211,63 @@
 
     .hero-sub a:hover { text-decoration-color: var(--rust); }
 
-    .hero-meta {
+    .hero-actions {
+      margin-top: 20px;
       display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 48px;
-      padding-top: 32px;
-      border-top: 1px solid var(--rule);
+      gap: 24px;
+    }
+
+    .hero-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 20px;
+      color: #fff;
+      background: var(--rust);
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .hero-primary:hover {
+      color: #fff;
+      background: #6f2a1e;
+      transform: translateY(-2px);
+    }
+
+    .hero-secondary {
+      color: var(--ink-soft);
+      font-family: var(--sans);
+      font-size: 12px;
+      text-underline-offset: 4px;
+      text-decoration-color: rgba(74, 63, 53, 0.3);
+    }
+
+    .hero-meta {
+      width: min(100%, 790px);
+      margin-top: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 20px 16px;
+      background: rgba(249, 246, 239, 0.76);
+      border: 1px solid rgba(255, 255, 255, 0.76);
+      border-radius: 18px;
+      box-shadow: 0 18px 52px rgba(63, 42, 28, 0.1);
+      backdrop-filter: blur(18px);
     }
 
     .hero-meta-item {
       text-align: center;
+      padding: 2px 16px;
+      border-left: 1px solid rgba(120, 97, 74, 0.22);
     }
+
+    .hero-meta-item:first-child { border-left: 0; }
 
     .hero-meta-label {
       font-family: var(--sans);
@@ -167,10 +280,37 @@
     }
 
     .hero-meta-value {
-      font-family: var(--serif);
+      font-family: var(--display);
       font-size: 1.1rem;
-      font-weight: 500;
+      font-weight: 400;
       color: var(--ink);
+    }
+
+    .motion-control {
+      position: absolute;
+      z-index: 4;
+      right: 24px;
+      bottom: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 13px;
+      color: var(--ink-soft);
+      background: rgba(249, 246, 239, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.76);
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(63, 42, 28, 0.1);
+      font: 500 10px/1 var(--sans);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+    }
+
+    .section {
+      position: relative;
+      z-index: 2;
+      background: var(--cream);
     }
 
     /* ── Section wrapper ───────────────────────────── */
@@ -485,15 +625,66 @@
       .site-nav { padding: 0 24px; }
       .nav-links { display: none; }
       .hero, .section { padding-left: 24px; padding-right: 24px; }
-      .hero { padding-top: 60px; }
+      .hero {
+        min-height: calc(100svh - 56px);
+        padding-top: 48px;
+        padding-bottom: 40px;
+      }
+      .hero h1 {
+        font-size: clamp(3.7rem, 19vw, 5.2rem);
+        line-height: 0.88;
+      }
+      .hero h1 br { display: none; }
+      .hero-reading-panel { padding: 20px 18px; }
+      .hero-actions { flex-direction: column; gap: 14px; }
+      .hero-primary { width: 100%; justify-content: center; }
       .pillars { grid-template-columns: 1fr; }
       .grade-grid { grid-template-columns: 1fr; }
-      .hero-meta { gap: 24px; flex-wrap: wrap; }
+      .hero-meta {
+        margin-top: 32px;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 18px;
+      }
+      .hero-meta-item:nth-child(3) { border-left: 0; }
+      .motion-control {
+        right: 14px;
+        bottom: 14px;
+        width: 36px;
+        height: 36px;
+        justify-content: center;
+        padding: 0;
+      }
+      .motion-control-label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+      }
       footer { flex-direction: column; padding: 32px 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-video { display: none; }
+      .motion-control { display: none; }
     }
   </style>
 </head>
 <body>
+
+<!-- ── Cinematic background (homepage only) ───────── -->
+<div class="hero-video-stage" aria-hidden="true">
+  <video class="hero-video" id="hero-video-a" muted autoplay playsinline preload="auto">
+    <source src="assets/jungle-background.mp4" type="video/mp4" />
+  </video>
+  <video class="hero-video" id="hero-video-b" muted playsinline preload="auto">
+    <source src="assets/jungle-background.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-video-wash"></div>
+  <div class="hero-video-vignette"></div>
+</div>
 
 <!-- ── Navigation ──────────────────────────────────── -->
 <nav class="site-nav">
@@ -512,11 +703,17 @@
 <header class="hero">
   <p class="hero-eyebrow">Inspired by Denjong Dzogchen</p>
   <h1>A Curriculum for<br/><em>the Whole Child</em></h1>
-  <p class="hero-sub">
-    A contemplative Dharma curriculum for Grades 1–8 — rooted in the Himalayan Buddhist tradition,
-    designed for the classroom. Each year builds on the last, planting seeds that
-    deepen across the whole school journey. <a href="https://www.youtube.com/watch?v=8tn2S8gmx44" target="_blank" rel="noopener noreferrer">Here is a glimpse.</a>
-  </p>
+  <div class="hero-reading-panel">
+    <p class="hero-sub">
+      A contemplative Dharma curriculum for Grades 1–8 — rooted in the Himalayan Buddhist tradition,
+      designed for the classroom. Each year builds on the last, planting seeds that
+      deepen across the whole school journey.
+    </p>
+    <div class="hero-actions">
+      <a class="hero-primary" href="#grades">Explore the curriculum <span aria-hidden="true">→</span></a>
+      <a class="hero-secondary" href="https://www.youtube.com/watch?v=8tn2S8gmx44" target="_blank" rel="noopener noreferrer">Watch a glimpse ↗</a>
+    </div>
+  </div>
   <div class="hero-meta">
     <div class="hero-meta-item">
       <span class="hero-meta-label">Grades</span>
@@ -535,6 +732,10 @@
       <span class="hero-meta-value">Remember → Create</span>
     </div>
   </div>
+  <button class="motion-control" type="button" aria-label="Pause background motion">
+    <span class="motion-control-icon" aria-hidden="true">Ⅱ</span>
+    <span class="motion-control-label">Pause motion</span>
+  </button>
 </header>
 
 <!-- ── Section 01 — What this is ───────────────────── -->
@@ -772,5 +973,6 @@
   </nav>
 </footer>
 
+<script src="assets/home-hero.js"></script>
 </body>
 </html>
