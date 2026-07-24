@@ -73,7 +73,7 @@ In G6.U3.C1 and G6.U3.C2, the prayer set runs with the first ten prayers only. T
 
 ## New Prayer Protocol: The Dolma
 
-The Dolma is the Tara Prayer — named for *Drolma* (སྒྲོལ་མ), the Tibetan name for Tara, meaning "she who liberates."
+The Dolma is the Tara Prayer — named for *Drolma* (སྒྲོལ་མ), the traditional name for Tara, meaning "she who liberates."
 
 **When it enters:** G6.U3.C3 — at both opening and closing.
 

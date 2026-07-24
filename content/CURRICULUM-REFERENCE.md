@@ -9,7 +9,7 @@ Each lesson in Part 3 is tagged:
 
 | Tag | Meaning |
 |-----|---------|
-| **B** | Buddhist — content is specifically rooted in Buddhist teaching, figures, ritual, cosmology, or practice. Requires Tibetan/Buddhist cultural context to be fully meaningful. |
+| **B** | Buddhist — content is specifically rooted in Buddhist teaching, figures, ritual, cosmology, or practice. Requires Himalayan Buddhist cultural context to be fully meaningful. |
 | **U** | Universal — the lesson's core theme (grief, identity, empathy, creativity, community) is cross-traditional and accessible to students of any background. |
 | **B+U** | Both — a universal human theme carried within a Buddhist framework, or Buddhist content that opens directly onto universal experience. The lesson works at both levels simultaneously. |
 
@@ -21,7 +21,7 @@ Most lessons are B+U. Pure U lessons tend to be the making/reflecting/sharing cl
 
 Thirteen prayers, accumulated one or two per grade, Grade 1 through Grade 8. By the Threshold ceremony in Grade 8, students lead the full set from memory.
 
-| # | Prayer Name | Tibetan / Sanskrit | Grade Introduced | Function in the Tradition | Featured Lessons |
+| # | Prayer Name | Dharma Term / Sanskrit | Grade Introduced | Function in the Tradition | Featured Lessons |
 |---|-------------|-------------------|-----------------|--------------------------|-----------------|
 | 1 | **Kyap Dro** | སྐྱབས་འགྲོ (*Kyab 'gro*) | Grade 1 | Taking Refuge — the foundational act of Buddhist practice: taking refuge in the Buddha, Dharma, and Sangha. Opens every session; the first act of orientation. | G1.U1.C1 (introduced); every opening from G1 onward |
 | 2 | **Om Mani Padme Hung** (7×) | ཨོཾ་མཎི་པདྨེ་ཧཱུྃ | Grade 1 | The mantra of Avalokiteshvara (Chenrezig) — compassion in sound. Six syllables, six realms, the wish for all beings to be free from suffering. | G1.U1.C1 (sound-first exposure); G1.U1.C2 (meaning given); G7.U2.C1 (Feynman exercise); G8.U5.C1 (full repertoire) |
@@ -63,9 +63,9 @@ Primary texts, stories, images, and objects that anchor specific units. Listed i
 | 1 | **Jataka Tales** (various) | Traditional Buddhist story collection | G1.U4.C1 (The Brave Little Parrot) | G1.U6.C1–C5; G3.U1.C1 (The Fish King) | Rotating library across the curriculum. Five standalone sessions in G1.U6 — each uses a different tale. G1.U4.C1 and G1.U6.C1 both use the Brave Little Parrot; the Curriculum guidance for G1.U6.C1 differentiates the lens (G1.U4.C1 = patience / drop by drop; G1.U6.C1 = courage despite fear) and offers the option to substitute a different tale. *Twenty Jataka Tales* (Noor Inayat Khan) is the reference collection. |
 | 2 | ***The Giving Tree*** | Picture book | G1.U2.C1 | — | Shel Silverstein. Entry point into unconditional love and giving without expectation. |
 | 3 | **The Life of Siddhartha / the Buddha** | Traditional biography | G2.U2.C1 | G5.U3 (context); G8.U1 (referenced) | Teacher draws on traditional biographical accounts. No single authorised text required. Contains the Pajapati seed in G2.U2.C1. |
-| 4 | **The Life of Guru Rinpoche / Padmasambhava** | Traditional Tibetan biography (*namthar*) | G1.U3.C1 | G2.U3; G5.U3 | Grade 1: miraculous birth on a lotus. Grade 2: character deepened. Grade 5: transmission of Dharma to Tibet. |
+| 4 | **The Life of Guru Rinpoche / Padmasambhava** | Traditional Himalayan Buddhist biography (*namthar*) | G1.U3.C1 | G2.U3; G5.U3 | Grade 1: miraculous birth on a lotus. Grade 2: character deepened. Grade 5: transmission of Dharma to Tibet. |
 | 5 | **The Wheel of Life / Sipa Khorlo** | Sacred image (thangka) | G5.U1.C1 | G5.U2; G8.U1; G8.U3.C2 | The thangka image is the primary visual text of the curriculum. A classroom-suitable reproduction is required. |
-| 6 | **The *Bardo Tödöl* (Tibetan Book of the Dead)** | Classical Tibetan Buddhist text | G6.U2.C1 | G6.U2.C2–C4 | Referenced and excerpted by the teacher — not read in full by students. W. Y. Evans-Wentz or Chogyam Trungpa/Francesca Fremantle translations are standard English references. |
+| 6 | **The *Bardo Tödöl* (Bardo Thodol)** | Classical Himalayan Buddhist text | G6.U2.C1 | G6.U2.C2–C4 | Referenced and excerpted by the teacher — not read in full by students. W. Y. Evans-Wentz or Chogyam Trungpa/Francesca Fremantle translations are standard English references. |
 | 7 | **The Life and Songs of Milarepa** | Traditional biography + poetry | G8.U2.C1 | G8.U2.C2–C5 | Teacher draws on traditional biography and selected excerpts from *The Hundred Thousand Songs of Milarepa* (*Gurtö*). Garma C.C. Chang's translation is the standard English reference. Told orally — students do not need their own copies. |
 | 8 | **The Life of Mahapajapati Gotami** | Traditional Buddhist biography + literary reconstruction | G6.U2.C2 (grief touchpoint) | G6.U3.C2 (partial story — early life and historical constraint only); G8.U4.C1–C7 (full novel study) | Reconstructed from the *Gotamī Apadāna*, the *Therigatha*, and modern scholarship. The curriculum frames it as a novel study in G8.U4 (*The Girl Who Became a Buddha* or equivalent). Teacher assembles excerpts from multiple sources. Key references: Bhikkhu Analayo; Liz Wilson's *Charming Cadavers*; the *Gotamī Apadāna* itself. **Scope note:** G6.U2.C2 = brief grief touchpoint only (one paragraph). G6.U3.C2 = early life and historical constraint only, no three refusals or ordination. Full story — three refusals, ordination, enlightenment, death — is reserved for G8.U4. |
 | 9 | **Images of Tara (White and Green)** | Sacred iconographic images | G6.U3.C1 | G6.U3.C2–C4; G8.U4.C5 | Classroom-suitable images of White Tara and Green Tara needed for G6.U3. |
